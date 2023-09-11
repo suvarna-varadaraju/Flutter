@@ -1,0 +1,69 @@
+import 'package:chewie/chewie.dart';
+import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
+
+class Home extends StatefulWidget {
+  Home({super.key});
+
+  @override
+  State<Home> createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<Home> {
+  late VideoPlayerController _controller;
+  late ChewieController _chewieController;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  void initState() {
+    super.initState();
+    double _aspectRatio = 16 / 9;
+    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.setLooping(true);
+    _chewieController = ChewieController(
+      videoPlayerController: _controller,
+      autoPlay: true,
+      looping: true,
+      allowFullScreen: true,
+      zoomAndPan: true,
+      aspectRatio: _aspectRatio,
+      autoInitialize: true,
+      showControls: false,
+    );
+    _chewieController.enterFullScreen();
+
+    if (_controller.value.isPlaying) {
+      _controller.pause();
+    } else {
+      _controller.play();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _chewieController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: _initializeVideoPlayerFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
+    );
+  }
+}

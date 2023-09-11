@@ -1,0 +1,65 @@
+name: damacahs
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  video_player: ^2.7.0
+
+  chewie: ^1.7.0
+
+  flutter_svg: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat_medium.ttf
+        - asset: assets/fonts/montserrat_semibold.ttf
+        - asset: assets/fonts/montserrat_regular.ttf
+
+
+  assets:
+    - assets/video/
+    - assets/image/
+    - assets/fonts/
+    - assets/image/band.jpg
+    - assets/image/casacanal_1.jpg
+    - assets/image/casacanal_2.jpg
+    - assets/image/casacanal_4.jpg
+    - assets/image/casacanal_5.jpg
+    - assets/image/onecanal_new1.jpg
+    - assets/image/onecanal_new2.jpg
+    - assets/image/onecanal_new3.jpg
+    - assets/image/onecanal_6.jpg
+    - assets/image/onecrescent_new.jpg
+    - assets/image/onecresecent_2.jpg
+    - assets/image/onecresecent_3.jpg
+    - assets/image/onecresecent_4.jpg
+    - assets/image/villa_serenity1.jpg
+    - assets/image/villa_serenity.jpg
+    - assets/image/villa_amara2.jpg
+    - assets/image/villa_amara1.jpg
+    - assets/image/villa_sunrays2.jpg
+    - assets/image/villa_sunrays1.jpg
+    - assets/image/villa_serene2.jpg
+    - assets/image/villa_serene1.jpg
+    - assets/image/villa_azalea2.jpg
+    - assets/image/villa_azalea1.jpg
