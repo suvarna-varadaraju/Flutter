@@ -145,7 +145,6 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
       setState(() {
         _isShaking = true;
       });
-      
 
       TweenSequence<double>(
         <TweenSequenceItem<double>>[

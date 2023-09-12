@@ -86,7 +86,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                   ),
                   // You can add other child widgets here if needed
                   child: Center(child: Text(
-                    "Grandeur Elevated: Dubai's \nUltra-Luxury Residences.".toUpperCase(),
+                    "DISCOVER OPULENCE \n OUR Ultra-Luxury villas in dubai".toUpperCase(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: ColorConstants.kLiteBlack,
@@ -625,7 +625,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                           decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
-                              image: AssetImage('assets/image/villa_azalea2.jpg'), // Replace with your image asset path
+                              image: AssetImage('assets/image/villa_azalea1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
                           ),
@@ -635,7 +635,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                           decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
-                              image: AssetImage('assets/image/villa_azalea1.jpg'), // Replace with your image asset path
+                              image: AssetImage('assets/image/villa_azalea2.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
                           ),

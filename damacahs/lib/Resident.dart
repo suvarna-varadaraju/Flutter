@@ -85,7 +85,7 @@ class _VideoPlayerScreenState extends State<Resident> {
             ),
             // You can add other child widgets here if needed
               child: Center(child: Text(
-                "Grandeur Elevated: Dubai's \nUltra-Luxury Residences.".toUpperCase(),
+                "Grandeur Elevated: Dubai's \nUltra-Luxury Residences".toUpperCase(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: ColorConstants.kLiteBlack,
