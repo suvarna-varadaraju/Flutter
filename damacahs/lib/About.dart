@@ -95,79 +95,7 @@ class _VideoPlayerScreenState extends State<About> {
                   )
               ),
               // Third layout
-              Container(
-                width: double.infinity,
-                height: 300,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Horizontal ScrollView
-                    PageView(
-                      controller: _pageController,
-                      onPageChanged: (index) {
-                        setState(() {
-                          _currentPage = index;
-                        });
-                      },
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/casacanal_4.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/casacanal_1.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/casacanal_2.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/casacanal_5.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
-                ),
-              ),
               //fourth layout
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-              ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
                 width: double.infinity,
