@@ -22,12 +22,10 @@ class _VideoPlayerScreenState extends State<Home> {
     _controller.setLooping(true);
     _chewieController = ChewieController(
       videoPlayerController: _controller,
-      autoPlay: true,
       looping: true,
       allowFullScreen: true,
       zoomAndPan: true,
       aspectRatio: _aspectRatio,
-      autoInitialize: true,
       showControls: false,
     );
     _chewieController.enterFullScreen();

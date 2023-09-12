@@ -36,7 +36,6 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
