@@ -94,17 +94,26 @@ class _VideoPlayerScreenState extends State<About> {
                   ),
                   )
               ),
-              // Third layout
-              //fourth layout
+              
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Container(
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: Colors.white, // Container background color
+                              image: DecorationImage(
+                                image: AssetImage('assets/image/onecanal_new1.jpg'), // Replace with your image asset path
+                                fit: BoxFit.cover, // Adjust how the image fits the container
+                              ),
+                            ),
+                          ),
                           Text('CASA CANAL', textAlign: TextAlign.left,style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kLiteBlack)),
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
