@@ -338,11 +338,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
             ),
             isFirst: true,
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.kPrimaryColor,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -354,7 +354,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -369,11 +369,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
               thickness: 2, // Adjust the line thickness
             ),
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -385,7 +385,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -400,11 +400,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
               thickness: 2, // Adjust the line thickness
             ),
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -416,7 +416,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -431,11 +431,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
               thickness: 2, // Adjust the line thickness
             ),
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -447,7 +447,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -462,11 +462,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
               thickness: 2, // Adjust the line thickness
             ),
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -478,7 +478,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -493,11 +493,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
               thickness: 2, // Adjust the line thickness
             ),
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -509,7 +509,7 @@ class ProgressIndicatorWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
           TimelineTile(
@@ -525,11 +525,11 @@ class ProgressIndicatorWidget extends StatelessWidget {
             ),
             isLast: true,
             indicatorStyle: IndicatorStyle(
-              width: 25,
+              width: 22,
               color: ColorConstants.lite_gold,
             ),
             endChild: Container(
-              margin: EdgeInsets.all(12.0),
+              margin: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
               ),
