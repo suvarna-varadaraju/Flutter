@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 
@@ -94,125 +95,146 @@ class _VideoPlayerScreenState extends State<About> {
                   ),
                   )
               ),
-              
               Container(
-                padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
                 width: double.infinity,
+                height: 300,
+                decoration: const BoxDecoration(
+                  color: Colors.white, // Container background color
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/casacanal_1.jpg'), // Replace with your image asset path
+                    fit: BoxFit.cover, // Adjust how the image fits the container
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                child: const Column(
+                    children: [
+                      Text("AHS PROPERTIES", style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.all(15), //apply padding to all four sides
+                        child: Text("AHS Properties redefines luxury living, worth \$1.5B. In a year, they achieved milestones: sold 3 Palm Jumeirah villas for \$475M, launched another for \$45M. Leading ultra-luxury with new projects at \$700M in Dubai Water Canal, Palm Jumeirah. Sold 3 villas for \$75M, GDP stays at \$1.5B. Unveiled \$45M Emirates Hills mansion, a new opulent era.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                      ),
+                    ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                width: double.infinity,
+                height: 300,
+                decoration: const BoxDecoration(
+                  color: Colors.white, // Container background color
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/about_1.jpg'), // Replace with your image asset path
+                    fit: BoxFit.cover, // Adjust how the image fits the container
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                    children: [
+                      Text("AHS VENTURES", style: const TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.all(15), //apply padding to all four sides
+                        child: Text("Established in 2017 under Mr. Abbas Sajwani's vision, AHS Group is a global real estate and investment leader. AHS Ventures, founded in 2018, drives diverse successful ventures, all aimed at enhancing residential communities worldwide.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                      ),
+                    ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                width: double.infinity,
+                height: 300,
+                decoration: const BoxDecoration(
+                  color: Colors.white, // Container background color
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/about_ahs.jpg'), // Replace with your image asset path
+                    fit: BoxFit.cover, // Adjust how the image fits the container
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                child: Column(
+                    children: [
+                      Text("AHS INVESTMENTS", style: const TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      SizedBox(height:10),
+                      Padding(
+                        padding: EdgeInsets.all(15), //apply padding to all four sides
+                        child: Text("Founded in 2020, AHS Investments strives to create wealth and value through diverse investments in private and public equities. With a portfolio exceeding \$150 million, they exemplify commitment to innovation and expansion across various businesses and corporate entities.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                      ),
+                    ]),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10.0,10.0,20.0,10.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          Divider(
+                              color: ColorConstants.kPrimaryColor
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(10.0,10.0,20.0,10.0),
+                child: Column(
+                    children: [
+                      Text("THE HISTROY OF AHS", style: const TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      SizedBox(height:10),
+                      Padding(
+                        padding: EdgeInsets.all(15), //apply padding to all four sides
+                        child: Text("AHS Group excels in real estate, prioritizing excellence, innovation, and service. A leading player, it provides remarkable value to stakeholders and clients.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                      ),
+                    ]),
+              ),
+              Container(
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 120.0,
+                        child: ProgressIndicatorWidget()
+                    ),
                     Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                              color: Colors.white, // Container background color
-                              image: DecorationImage(
-                                image: AssetImage('assets/image/onecanal_new1.jpg'), // Replace with your image asset path
-                                fit: BoxFit.cover, // Adjust how the image fits the container
-                              ),
-                            ),
-                          ),
-                          Text('CASA CANAL', textAlign: TextAlign.left,style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kLiteBlack)),
-                          Padding(
-                              padding: EdgeInsets.only(top: 10.0,right: 10.0),
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
-                                style: OutlinedButton.styleFrom(
-                                    shape: StadiumBorder(),
-                                    side: BorderSide(color: ColorConstants.kPrimaryColor)
-                                ),
-                              )
-                          ),
-                        ]),
-                    SizedBox(height: 5),
-
-                    Row(
-                        children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": Dubai Water Canal",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
-                        ]),
-                    SizedBox(height: 4),
-
-                    Row(
-                        children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$800 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
-                        ]),
-
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10.0,20.0,20.0,10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Divider(
-                                    color: ColorConstants.kPrimaryColor
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 300,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Horizontal ScrollView
-                    PageView(
-                      controller: _pageController,
-                      onPageChanged: (index) {
-                        setState(() {
-                          _currentPage = index;
-                        });
-                      },
-                      children: [
+                      children: <Widget>[
+                        CardWidget(),
                         Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecanal_new1.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecanal_new2.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecanal_new3.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecanal_6.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
+                          width: 200.0,
+                          height: 200.0,
+                          margin: EdgeInsets.only(top: 10),
+                          child: Text(
+                            "With a focus on excellence, innovation, and impeccable service, AHS Group has grown to establish itself as a leading player in the real estate and development industry, delivering exceptional value to all its stakeholders and clientele alike.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'montserrat',
                             ),
                           ),
                         ),
@@ -220,219 +242,373 @@ class _VideoPlayerScreenState extends State<About> {
                     ),
                   ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
-                ),
-              ),
-              //five layout
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('ONE CANAL RESIDENCES', textAlign: TextAlign.left,style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kLiteBlack)),
-                          Padding(
-                              padding: EdgeInsets.only(top: 10.0,right: 10.0),
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
-                                style: OutlinedButton.styleFrom(
-                                    shape: StadiumBorder(),
-                                    side: BorderSide(color: ColorConstants.kPrimaryColor)
-                                ),
-                              )
-                          ),
-                        ]),
-                    SizedBox(height: 5),
-
-                    Row(
-                        children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": Dubai Water Canal",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
-                        ]),
-                    SizedBox(height: 4),
-
-                    Row(
-                        children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$350 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
-                        ]),
-
+                /*child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Align row items
+                  children: <Widget>[
                     Container(
-                      padding: EdgeInsets.fromLTRB(10.0,20.0,20.0,10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Divider(
-                                    color: ColorConstants.kPrimaryColor
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                      margin: EdgeInsets.only(left: 20, top: 16, bottom: 16),
+                      child: ProgressIndicatorWidget(),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 300,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Horizontal ScrollView
-                    PageView(
-                      controller: _pageController,
-                      onPageChanged: (index) {
-                        setState(() {
-                          _currentPage = index;
-                        });
-                      },
-                      children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        CardWidget(),
                         Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecrescent_new.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecresecent_2.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecresecent_3.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Colors.white, // Container background color
-                            image: DecorationImage(
-                              image: AssetImage('assets/image/onecresecent_4.jpg'), // Replace with your image asset path
-                              fit: BoxFit.cover, // Adjust how the image fits the container
+                          margin: EdgeInsets.only(top: 10),
+                          child: Text(
+                            "With a focus on excellence, innovation, and impeccable service, AHS Group has grown to establish itself as a leading player in the real estate and development industry, delivering exceptional value to all its stakeholders and clientele alike.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontFamily: 'montserrat',
                             ),
                           ),
                         ),
                       ],
                     ),
                   ],
+                ),*/
+              ),
+          /*Container(
+            padding: EdgeInsets.all(2),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                      Divider(height: 60, color: ColorConstants.kPrimaryColor),
+                      CircleImageView(),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(6.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
+                SizedBox(width: 2),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      YearText("2017"),
+                      YearText("2018", marginTop: 64),
+                      YearText("2019", marginTop: 65),
+                      YearText("2020", marginTop: 66),
+                      YearText("2021", marginTop: 65),
+                      YearText("2022", marginTop: 66),
+                      YearText("2023", marginTop: 66),
+                    ],
+                  ),
                 ),
-              ),
-              //five layout
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('ONE CRESCENT RESIDENCES', textAlign: TextAlign.left,style: TextStyle(fontSize: 16, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kLiteBlack)),
-                          Padding(
-                              padding: EdgeInsets.only(top: 10.0,right: 10.0),
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
-                                style: OutlinedButton.styleFrom(
-                                    shape: StadiumBorder(),
-                                    side: BorderSide(color: ColorConstants.kPrimaryColor)
-                                ),
-                              )
-                          ),
-                        ]),
-                    SizedBox(height: 5),
-
-                    Row(
-                        children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": Palm Jumeirah",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
-                        ]),
-                    SizedBox(height: 4),
-
-                    Row(
-                        children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$200 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
-                        ]),
-
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10.0,20.0,20.0,10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              children: <Widget>[
-                                Divider(
-                                    color: ColorConstants.kPrimaryColor
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              ],
+            ),
+          ),*/
             ],
           ),
         )
     );
   }
+}
 
-  Widget buildIndicator(int index) {
+class ProgressIndicatorWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      width: 8.0,
-      height: 8.0,
-      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      padding: EdgeInsets.fromLTRB(15.0,0.0,10.0,0.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7, // Adjust the position of the line if needed
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            isFirst: true,
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.kPrimaryColor,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2017",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2018",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2019",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2020",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2021",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2022",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 5.0),
+            ),
+          ),
+          TimelineTile(
+            alignment: TimelineAlign.start,
+            lineXY: 0.7,
+            beforeLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            afterLineStyle: const LineStyle(
+              color: ColorConstants.kPrimaryColor, // Change the line color here
+              thickness: 2, // Adjust the line thickness
+            ),
+            isLast: true,
+            indicatorStyle: IndicatorStyle(
+              width: 25,
+              color: ColorConstants.lite_gold,
+            ),
+            endChild: Container(
+              margin: EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                "2023",
+                style: TextStyle(
+                  color: ColorConstants.kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CardWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4, // Adjust elevation as needed
+      margin: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+      child: Column(
+        children: [
+          Image.asset(
+            'assets/image/casacanal_1.jpg', // Replace with your image asset
+            width: 260,
+            height: 240,
+            fit: BoxFit.cover,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class YearText extends StatelessWidget {
+  final String text;
+  final double marginTop;
+
+  YearText(this.text, {this.marginTop = 0});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: marginTop),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Colors.purple,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
+
+class CircleImageView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 26,
+      height: 26,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: index == _currentPage ? ColorConstants.kPrimaryColor : Colors.black12,
+        border: Border.all(
+          color: Colors.purple,
+          width: 4,
+        ),
+      ),
+      child: Icon(
+        Icons.circle,
+        color: Colors.blue,
+        size: 26,
       ),
     );
   }

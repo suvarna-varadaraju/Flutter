@@ -19,6 +19,8 @@ dependencies:
 
   flutter_svg: ^2.0.5
 
+  timeline_tile: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,3 +65,6 @@ flutter:
     - assets/image/villa_serene1.jpg
     - assets/image/villa_azalea2.jpg
     - assets/image/villa_azalea1.jpg
+    - assets/image/about_1.jpg
+    - assets/image/about_ahs.jpg
+    - assets/image/about_ash1.jpg
