@@ -1,3 +1,4 @@
+import 'package:damacahs/MapSample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'About.dart';
@@ -45,7 +46,7 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   }
 
   final List<Widget> _pages = [
-    Home(),
+    MapSample(),
     Resident(),
     Villas(),
     About(),
