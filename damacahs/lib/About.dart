@@ -223,7 +223,7 @@ class _VideoPlayerScreenState extends State<About> {
                     ),
                     Column(
                       children: <Widget>[
-                        CardWidget(),
+                      CardWidget(image: "assets/image/history_2017.jpg"),
                         Container(
                           width: 200.0,
                           height: 200.0,
@@ -329,219 +329,254 @@ class ProgressIndicatorWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7, // Adjust the position of the line if needed
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            isFirst: true,
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.kPrimaryColor,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                "2017",
-                style: TextStyle(
+          InkWell(
+              onTap: (){
+                CardWidget(image: "assets/image/history_2017.jpg");
+              },
+              child: TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.7, // Adjust the position of the line if needed
+                afterLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                isFirst: true,
+                indicatorStyle: IndicatorStyle(
+                  width: 22,
                   color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                ),
+                endChild: Container(
+                  margin: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "2017",
+                    style: TextStyle(
+                      color: ColorConstants.kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+                ),
+              )
+          ),
+          InkWell(
+              onTap: (){
+                print("Container clicked");
+              },
+              child: TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.7,
+                beforeLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                afterLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                indicatorStyle: IndicatorStyle(
+                  width: 22,
+                  color: ColorConstants.lite_gold,
+                ),
+                endChild: Container(
+                  margin: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "2018",
+                    style: TextStyle(
+                      color: ColorConstants.kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
                 ),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+          ),
+          InkWell(
+              onTap: (){
+                print("Container clicked");
+              },
+              child:  TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.7,
+                beforeLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                afterLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                indicatorStyle: IndicatorStyle(
+                  width: 22,
+                  color: ColorConstants.lite_gold,
+                ),
+                endChild: Container(
+                  margin: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "2019",
+                    style: TextStyle(
+                      color: ColorConstants.kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+                ),
+              ),
+          ),
+          InkWell(
+              onTap: (){
+                print("Container clicked");
+              },
+              child: TimelineTile(
+                alignment: TimelineAlign.start,
+                lineXY: 0.7,
+                beforeLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                afterLineStyle: const LineStyle(
+                  color: ColorConstants.kPrimaryColor, // Change the line color here
+                  thickness: 2, // Adjust the line thickness
+                ),
+                indicatorStyle: IndicatorStyle(
+                  width: 22,
+                  color: ColorConstants.lite_gold,
+                ),
+                endChild: Container(
+                  margin: EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "2020",
+                    style: TextStyle(
+                      color: ColorConstants.kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+                ),
+              ),
+          ),
+          InkWell(
+            onTap: (){
+              print("Container clicked");
+            },
+            child: TimelineTile(
+              alignment: TimelineAlign.start,
+              lineXY: 0.7,
+              beforeLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
+              ),
+              afterLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
+              ),
+              indicatorStyle: IndicatorStyle(
+                width: 22,
+                color: ColorConstants.lite_gold,
+              ),
+              endChild: Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Text(
+                  "2021",
+                  style: TextStyle(
+                    color: ColorConstants.kPrimaryColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
+              ),
             ),
           ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
+          InkWell(
+            onTap: (){
+              print("Container clicked");
+            },
+            child: TimelineTile(
+              alignment: TimelineAlign.start,
+              lineXY: 0.7,
+              beforeLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
               ),
-              child: Text(
-                "2018",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              afterLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
+              ),
+              indicatorStyle: IndicatorStyle(
+                width: 22,
+                color: ColorConstants.lite_gold,
+              ),
+              endChild: Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
+                child: Text(
+                  "2022",
+                  style: TextStyle(
+                    color: ColorConstants.kPrimaryColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
+          InkWell(
+            onTap: (){
+              print("Container clicked");
+            },
+            child:  TimelineTile(
+              alignment: TimelineAlign.start,
+              lineXY: 0.7,
+              beforeLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
               ),
-              child: Text(
-                "2019",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              afterLineStyle: const LineStyle(
+                color: ColorConstants.kPrimaryColor, // Change the line color here
+                thickness: 2, // Adjust the line thickness
+              ),
+              isLast: true,
+              indicatorStyle: IndicatorStyle(
+                width: 22,
+                color: ColorConstants.lite_gold,
+              ),
+              endChild: Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
-            ),
-          ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                "2020",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                child: Text(
+                  "2023",
+                  style: TextStyle(
+                    color: ColorConstants.kPrimaryColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
               ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
-            ),
-          ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                "2021",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
-            ),
-          ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                "2022",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
-            ),
-          ),
-          TimelineTile(
-            alignment: TimelineAlign.start,
-            lineXY: 0.7,
-            beforeLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            afterLineStyle: const LineStyle(
-              color: ColorConstants.kPrimaryColor, // Change the line color here
-              thickness: 2, // Adjust the line thickness
-            ),
-            isLast: true,
-            indicatorStyle: IndicatorStyle(
-              width: 22,
-              color: ColorConstants.lite_gold,
-            ),
-            endChild: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                "2023",
-                style: TextStyle(
-                  color: ColorConstants.kPrimaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 1.0),
             ),
           ),
         ],
@@ -551,6 +586,8 @@ class ProgressIndicatorWidget extends StatelessWidget {
 }
 
 class CardWidget extends StatelessWidget {
+  late final String image;
+  CardWidget({required this.image});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -559,7 +596,7 @@ class CardWidget extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            'assets/image/casacanal_1.jpg', // Replace with your image asset
+            image, // Replace with your image asset
             width: 260,
             height: 240,
             fit: BoxFit.cover,
