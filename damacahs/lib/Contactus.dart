@@ -259,7 +259,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
           //snippet: 'Damac executive heights',
         ),
         icon: BitmapDescriptor.defaultMarker,
-        onTap: () => _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79"), // Change the URL as needed
+        onTap: () => _launchURL("https://goo.gl/maps/t1Th2vujSqsZKG986"),
       ));
 
       markers.add(Marker( //add second marker
@@ -269,7 +269,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
           title: 'Sales Center'
         ),
         icon: BitmapDescriptor.defaultMarker,
-          onTap: () => _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79"), // Change the URL as needed
+          onTap: () => _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79"),
       ));
     });
 
