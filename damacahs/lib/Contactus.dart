@@ -252,7 +252,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
   Set<Marker> getmarkers() { //markers to place on map
     setState(() {
       markers.add(Marker( //add first marker
-        markerId: MarkerId(showLocation.toString()),
+        markerId: MarkerId(""),
         position: LatLng(25.0953478, 55.1702784), //position of marker
         infoWindow: InfoWindow( //popup info
           title: 'Corporate Office'
