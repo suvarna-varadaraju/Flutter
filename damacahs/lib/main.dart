@@ -1,6 +1,5 @@
 import 'package:damacahs/BottomNavigationBarExampleApp.dart';
 import 'package:flutter/material.dart';
-import 'splash/splash_screen.dart';
 
 void main() async {
   runApp(MyApp());

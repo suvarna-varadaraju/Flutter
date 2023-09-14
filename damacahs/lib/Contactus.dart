@@ -51,7 +51,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'About us',
+            'Contact us',
             style: TextStyle(
               color: ColorConstants.kPrimaryColor,
               fontFamily: 'Montserrat',// Text color
