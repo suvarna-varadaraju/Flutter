@@ -259,9 +259,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
           //snippet: 'Damac executive heights',
         ),
         icon: BitmapDescriptor.defaultMarker,
-          onTap: () {
-
-          }//Icon for Marker
+        onTap: () => _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79"), // Change the URL as needed
       ));
 
       markers.add(Marker( //add second marker
