@@ -4,6 +4,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 
@@ -19,42 +20,12 @@ class _VideoPlayerScreenState extends State<Contactus> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
 
-  Completer<GoogleMapController> mapcontroller = Completer();
-
-  // on below line we are specifying our camera position
-  static final CameraPosition _kGoogle = const CameraPosition(
-    target: LatLng(37.42796133580664, -122.885749655962)
-  );
-
-  // on below line we have created list of markers
-  List<Marker> _marker = [];
-  final List<Marker> _list = const [
-    // List of Markers Added on Google Map
-    Marker(
-        markerId: MarkerId('1'),
-        position: LatLng(20.42796133580664, 80.885749655962),
-        infoWindow: InfoWindow(
-          title: 'Corporate office',
-        )
-    ),
-
-    Marker(
-        markerId: MarkerId('2'),
-        position: LatLng(25.42796133580664, 80.885749655962),
-        infoWindow: InfoWindow(
-          title: 'Sale center',
-        )
-    ),
-  ];
-  /*final LatLng _center = const LatLng(20.5937, 78.9629);
-
-  void _onMapCreated(GoogleMapController controller){
-    mapController = controller;
-  }*/
+  final Set<Marker> markers = new Set(); //markers for google map
+  static const LatLng showLocation = const LatLng(25.182683, 55.248041); //location to show in map
 
   void initState() {
     super.initState();
-    _marker.addAll(_list);
+    getmarkers();
     double _aspectRatio = 16 / 9;
     _controller = VideoPlayerController.asset("assets/video/aboutcompany.mp4");
     _controller.initialize();
@@ -218,14 +189,18 @@ class _VideoPlayerScreenState extends State<Contactus> {
               Container(
                 width: double.infinity,
                 height: 400,
-                child: GoogleMap(
-                  // on below line setting camera position
-                  initialCameraPosition: _kGoogle,
-                  mapType: MapType.normal,
-                  myLocationEnabled: true,
-                  compassEnabled: true,
-                  onMapCreated: (GoogleMapController controller){
-                    mapcontroller.complete(controller);
+                child: GoogleMap( //Map widget from google_maps_flutter package
+                  zoomGesturesEnabled: true, //enable Zoom in, out on map
+                  initialCameraPosition: CameraPosition( //innital position in map
+                    target: showLocation, //initial position
+                    zoom: 11.0, //initial zoom level
+                  ),
+                  markers: getmarkers(), //markers to show on map
+                  mapType: MapType.normal, //map type
+                  onMapCreated: (controller) { //method called when map is created
+                    setState(() {
+                      mapController = controller;
+                    });
                   },
                 ),
 
@@ -272,5 +247,44 @@ class _VideoPlayerScreenState extends State<Contactus> {
           ),
         )
     );
+  }
+
+  Set<Marker> getmarkers() { //markers to place on map
+    setState(() {
+      markers.add(Marker( //add first marker
+        markerId: MarkerId(showLocation.toString()),
+        position: LatLng(25.0953478, 55.1702784), //position of marker
+        infoWindow: InfoWindow( //popup info
+          title: 'Corporate Office'
+          //snippet: 'Damac executive heights',
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+          onTap: () {
+
+          }//Icon for Marker
+      ));
+
+      markers.add(Marker( //add second marker
+        markerId: MarkerId(showLocation.toString()),
+        position: LatLng(25.2041666, 55.2628507), //position of marker
+        infoWindow: InfoWindow( //popup info
+          title: 'Sales Center'
+        ),
+        icon: BitmapDescriptor.defaultMarker,
+          onTap: () async {
+            _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79");
+          }//Icon for Marker
+      ));
+    });
+
+    return markers;
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
