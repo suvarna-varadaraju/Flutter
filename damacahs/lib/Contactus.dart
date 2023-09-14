@@ -304,7 +304,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
         borderRadius: BorderRadius.circular(4.0),
         border: Border.all(
           color: ColorConstants.kPrimaryColor,
-          width: 1.0,
+          width: 0.5,
         ),
       ),
       child: TextField(
@@ -334,10 +334,10 @@ class _VideoPlayerScreenState extends State<Contactus> {
         decoration: InputDecoration(
           hintText: label,
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorConstants.kPrimaryColor),
+            borderSide: BorderSide(color: ColorConstants.kPrimaryColor,width: 0.5),
           ),
           focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorConstants.kPrimaryColor),
+            borderSide: BorderSide(color: ColorConstants.kPrimaryColor,width: 0.5),
           ),
         ),
       ),
