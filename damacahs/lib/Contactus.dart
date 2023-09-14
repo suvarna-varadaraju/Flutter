@@ -284,11 +284,11 @@ class _VideoPlayerScreenState extends State<Contactus> {
     return markers;
   }
 
-  _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
+  _launchURL(String mapurl) async {
+    if (await canLaunchUrl(Uri.parse(mapurl))) {
+      await launchUrl(Uri.parse(mapurl));
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $mapurl';
     }
   }
 
