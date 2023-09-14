@@ -22,6 +22,10 @@ class _VideoPlayerScreenState extends State<Contactus> {
 
   final Set<Marker> markers = new Set(); //markers for google map
   static const LatLng showLocation = const LatLng(25.182683, 55.248041); //location to show in map
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
 
   void initState() {
     super.initState();
@@ -203,46 +207,50 @@ class _VideoPlayerScreenState extends State<Contactus> {
                     });
                   },
                 ),
-
-                /*child: GoogleMap(
-                  onMapCreated: _onMapCreated,
-                  initialCameraPosition: CameraPosition(
-                    target: _center,
-                    zoom: 4,
-                  ),
-                    ),*/
               ),
-              /*Container(
+              Container(
+                margin: EdgeInsets.only(top: 30),
+                child: Text(
+                  "Register with us",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: ColorConstants.kLiteBlack,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'montserrat',
+                  ),
+                ),
+              ),
+              Container(
                 width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                        width: 120.0,
-                       // child: ProgressIndicatorWidget()
+                margin: EdgeInsets.only(top: 20),
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    _buildTextFieldWIthoutBorder(
+                      label: 'Name *',
+                      controller: nameController,
                     ),
-                    Column(
-                      children: <Widget>[
-                        //CardWidget(image: "assets/image/history_2017.jpg"),
-                        Container(
-                          width: 200.0,
-                          height: 200.0,
-                          margin: EdgeInsets.only(top: 10),
-                          child: Text(
-                            "With a focus on excellence, innovation, and impeccable service, AHS Group has grown to establish itself as a leading player in the real estate and development industry, delivering exceptional value to all its stakeholders and clientele alike.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'montserrat',
-                            ),
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: 20.0),
+                    _buildTextFieldWIthoutBorder(
+                      label: 'Email *',
+                      controller: emailController,
+                    ),
+                    SizedBox(height: 20.0),
+                    _buildTextFieldWIthoutBorder(
+                      label: 'Phone *',
+                      controller: phoneController,
+                      inputType: TextInputType.phone,
+                    ),
+                    SizedBox(height: 20.0),
+                    _buildTextField(
+                      label: 'Message',
+                      controller: messageController,
+                      maxLines: 5,
                     ),
                   ],
                 ),
-              ),*/
+              ),
             ],
           ),
         )
@@ -252,7 +260,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
   Set<Marker> getmarkers() { //markers to place on map
     setState(() {
       markers.add(Marker( //add first marker
-        markerId: MarkerId(showLocation.toString()),
+        markerId: MarkerId(""),
         position: LatLng(25.0953478, 55.1702784), //position of marker
         infoWindow: InfoWindow( //popup info
           title: 'Corporate Office'
@@ -277,10 +285,62 @@ class _VideoPlayerScreenState extends State<Contactus> {
   }
 
   _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  Widget _buildTextField({
+    required String label,
+    required TextEditingController controller,
+    TextInputType? inputType,
+    int? maxLines,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(4.0),
+        border: Border.all(
+          color: ColorConstants.kPrimaryColor,
+          width: 1.0,
+        ),
+      ),
+      child: TextField(
+        controller: controller,
+        keyboardType: inputType,
+        maxLines: maxLines,
+        decoration: InputDecoration(
+          hintText: label,
+          border: InputBorder.none,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextFieldWIthoutBorder({
+    required String label,
+    required TextEditingController controller,
+    TextInputType? inputType,
+    int? maxLines,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(4.0),
+      child: TextField(
+        controller: controller,
+        keyboardType: inputType,
+        maxLines: maxLines,
+        decoration: InputDecoration(
+          hintText: label,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorConstants.kPrimaryColor),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorConstants.kPrimaryColor),
+          ),
+        ),
+      ),
+    );
   }
 }
