@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,14 +18,43 @@ class _VideoPlayerScreenState extends State<Contactus> {
   late GoogleMapController mapController;
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
-  final LatLng _center = const LatLng(20.5937, 78.9629);
+
+  Completer<GoogleMapController> mapcontroller = Completer();
+
+  // on below line we are specifying our camera position
+  static final CameraPosition _kGoogle = const CameraPosition(
+    target: LatLng(37.42796133580664, -122.885749655962)
+  );
+
+  // on below line we have created list of markers
+  List<Marker> _marker = [];
+  final List<Marker> _list = const [
+    // List of Markers Added on Google Map
+    Marker(
+        markerId: MarkerId('1'),
+        position: LatLng(20.42796133580664, 80.885749655962),
+        infoWindow: InfoWindow(
+          title: 'Corporate office',
+        )
+    ),
+
+    Marker(
+        markerId: MarkerId('2'),
+        position: LatLng(25.42796133580664, 80.885749655962),
+        infoWindow: InfoWindow(
+          title: 'Sale center',
+        )
+    ),
+  ];
+  /*final LatLng _center = const LatLng(20.5937, 78.9629);
 
   void _onMapCreated(GoogleMapController controller){
     mapController = controller;
-  }
+  }*/
 
   void initState() {
     super.initState();
+    _marker.addAll(_list);
     double _aspectRatio = 16 / 9;
     _controller = VideoPlayerController.asset("assets/video/aboutcompany.mp4");
     _controller.initialize();
@@ -188,14 +219,25 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 width: double.infinity,
                 height: 400,
                 child: GoogleMap(
+                  // on below line setting camera position
+                  initialCameraPosition: _kGoogle,
+                  mapType: MapType.normal,
+                  myLocationEnabled: true,
+                  compassEnabled: true,
+                  onMapCreated: (GoogleMapController controller){
+                    mapcontroller.complete(controller);
+                  },
+                ),
+
+                /*child: GoogleMap(
                   onMapCreated: _onMapCreated,
                   initialCameraPosition: CameraPosition(
                     target: _center,
                     zoom: 4,
                   ),
-                    ),
+                    ),*/
               ),
-              Container(
+              /*Container(
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -225,34 +267,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
                     ),
                   ],
                 ),
-                /*child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Align row items
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(left: 20, top: 16, bottom: 16),
-                      child: ProgressIndicatorWidget(),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        CardWidget(),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Text(
-                            "With a focus on excellence, innovation, and impeccable service, AHS Group has grown to establish itself as a leading player in the real estate and development industry, delivering exceptional value to all its stakeholders and clientele alike.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontFamily: 'montserrat',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),*/
-              ),
+              ),*/
             ],
           ),
         )
