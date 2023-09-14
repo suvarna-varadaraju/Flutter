@@ -46,7 +46,7 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
   }
 
   final List<Widget> _pages = [
-    MapSample(),
+    Home(),
     Resident(),
     Villas(),
     About(),

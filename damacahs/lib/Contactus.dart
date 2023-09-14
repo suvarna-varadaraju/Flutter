@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 
@@ -12,10 +13,14 @@ class Contactus extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<Contactus> {
+  late GoogleMapController mapController;
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
-  PageController _pageController = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
-  int _currentPage = 0;
+  final LatLng _center = const LatLng(20.5937, 78.9629);
+
+  void _onMapCreated(GoogleMapController controller){
+    mapController = controller;
+  }
 
   void initState() {
     super.initState();
@@ -42,7 +47,6 @@ class _VideoPlayerScreenState extends State<Contactus> {
   void dispose() {
     _controller.dispose();
     _chewieController.dispose();
-    _pageController.dispose();
     super.dispose();
   }
 
@@ -181,18 +185,15 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(10.0,10.0,20.0,10.0),
-                child: Column(
-                    children: [
-                      Text("THE HISTROY OF AHS", style: const TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
-                      SizedBox(height:10),
-                      Padding(
-                        padding: EdgeInsets.all(15), //apply padding to all four sides
-                        child: Text("AHS Group excels in real estate, prioritizing excellence, innovation, and service. A leading player, it provides remarkable value to stakeholders and clients.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
-                      ),
-                    ]),
+                width: double.infinity,
+                height: 400,
+                child: GoogleMap(
+                  onMapCreated: _onMapCreated,
+                  initialCameraPosition: CameraPosition(
+                    target: _center,
+                    zoom: 4,
+                  ),
+                    ),
               ),
               Container(
                 width: double.infinity,

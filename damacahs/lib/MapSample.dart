@@ -29,18 +29,31 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
+      body: Container(
+        // in the below line, creating google maps.
+        child: GoogleMap(
+          // in the below line, setting camera position
+          initialCameraPosition: _kGooglePlex,
+          // in the below line, specifying map type.
+          mapType: MapType.normal,
+          // in the below line, setting user location enabled.
+          myLocationEnabled: true,
+          // in the below line, setting compass enabled.
+          compassEnabled: true,
+          // in the below line, specifying controller on map complete.
+          onMapCreated: (GoogleMapController controller){
+            _controller.complete(controller);
+          },
+        ),
+      )
+      /*body: GoogleMap(
         mapType: MapType.hybrid,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
+      ),*/
+
     );
   }
 
