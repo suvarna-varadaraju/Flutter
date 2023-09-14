@@ -271,9 +271,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
           title: 'Sales Center'
         ),
         icon: BitmapDescriptor.defaultMarker,
-          onTap: () async {
-            _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79");
-          }//Icon for Marker
+          onTap: () => _launchURL("https://goo.gl/maps/WtzHb5xxHTkwdTF79"), // Change the URL as needed
       ));
     });
 
