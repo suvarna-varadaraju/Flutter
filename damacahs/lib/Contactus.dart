@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -250,6 +250,121 @@ class _VideoPlayerScreenState extends State<Contactus> {
                     ),
                   ],
                 ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 4.0),
+                child: Column(
+                  children: [
+                    TextButton(
+                      child: Text("SEND MESSAGE",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 60.0,
+                height: 1.0,
+                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                color: ColorConstants.kPrimaryColor,
+              ),
+              Container(
+                padding: EdgeInsets.only(top:10.0),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/image/ph.svg',
+                        semanticsLabel: 'My SVG Picture',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/image/wtsp.svg',
+                        semanticsLabel: 'My SVG Picture',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(width: 20),
+                      SvgPicture.asset('assets/image/ml.svg',
+                        semanticsLabel: 'My SVG Picture',
+                        width: 20,
+                        height: 20,
+                      ),
+                      SizedBox(width: 20),
+                    ],
+                  ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 4.0),
+                child: Column(
+                  children: [
+                    TextButton(
+                      child: Text("LET'S TALK",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 60.0,
+                height: 1.0,
+                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                color: ColorConstants.kPrimaryColor,
+              ),
+              Container(
+                padding: EdgeInsets.only(top:10.0),
+                child: Row(
+                  children: [
+                    SizedBox(width: 20),
+                    SvgPicture.asset('assets/image/fb.svg',
+                      semanticsLabel: 'My SVG Picture',
+                      width: 20,
+                      height: 20,
+                    ),
+                    SizedBox(width: 20),
+                    SvgPicture.asset('assets/image/insta.svg',
+                      semanticsLabel: 'My SVG Picture',
+                      width: 20,
+                      height: 20,
+                    ),
+                    SizedBox(width: 20),
+                    SvgPicture.asset('assets/image/utb.svg',
+                      semanticsLabel: 'My SVG Picture',
+                      width: 20,
+                      height: 20,
+                    ),
+                    SizedBox(width: 20),
+                    SvgPicture.asset('assets/image/link.svg',
+                      semanticsLabel: 'My SVG Picture',
+                      width: 20,
+                      height: 20,
+                    ),
+                    SizedBox(width: 20),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 4.0),
+                child: Column(
+                  children: [
+                    TextButton(
+                      child: Text("SOCIAL LINKS",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 60.0,
+                height: 1.0,
+                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                color: ColorConstants.kPrimaryColor,
               ),
             ],
           ),
