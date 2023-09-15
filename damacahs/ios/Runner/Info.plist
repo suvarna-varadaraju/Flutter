@@ -59,5 +59,12 @@
         <string>googlechromes</string>
         <string>comgooglemaps</string>
     </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>https</string>
+        <string>http</string>
+        <string>tel</string>
+        <string>mailto</string>
+    </array>
 </dict>
 </plist>

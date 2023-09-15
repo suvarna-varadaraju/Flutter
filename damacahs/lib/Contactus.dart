@@ -4,6 +4,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
@@ -268,7 +269,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
                             color: ColorConstants.kLiteBlack,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () => sendEmail(context),
                       ),
                     ],
                   ),
@@ -288,22 +289,35 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 padding: EdgeInsets.only(top:20.0),
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/image/ph.svg',
+                      InkWell(
+                      child : SvgPicture.asset('assets/image/ph.svg',
                         semanticsLabel: 'My SVG Picture',
                         width: 20,
                         height: 20,
                       ),
+                          onTap: () => {
+                            _makePhoneCall()
+                          }
+                      ),
                       SizedBox(width: 20),
-                      SvgPicture.asset('assets/image/wtsp.svg',
+                      InkWell(
+                      child : SvgPicture.asset('assets/image/wtsp.svg',
                         semanticsLabel: 'My SVG Picture',
                         width: 20,
                         height: 20,
                       ),
+                        onTap: () => _launchURL("https://wa.me/+971 543090418"),
+                      ),
                       SizedBox(width: 20),
-                      SvgPicture.asset('assets/image/ml.svg',
+                      InkWell(
+                      child: SvgPicture.asset('assets/image/ml.svg',
                         semanticsLabel: 'My SVG Picture',
                         width: 20,
                         height: 20,
+                      ),
+                          onTap: () => {
+                            _sendEmail()
+                      }
                       ),
                       SizedBox(width: 20),
                     ],
@@ -340,28 +354,46 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 margin: EdgeInsets.only(left: 8.0),
                 child: Row(
                   children: [
-                    SvgPicture.asset('assets/image/fb.svg',
+                InkWell(
+                    child: SvgPicture.asset('assets/image/fb.svg',
                       semanticsLabel: 'My SVG Picture',
                       width: 20,
                       height: 20,
                     ),
+                  onTap: () => {
+                  FacebookPageOpener.openFacebookPage()
+                  }
+                ),
                     SizedBox(width: 20),
-                    SvgPicture.asset('assets/image/insta.svg',
+                    InkWell(
+                    child: SvgPicture.asset('assets/image/insta.svg',
                       semanticsLabel: 'My SVG Picture',
                       width: 20,
                       height: 20,
                     ),
+                        onTap: () => {
+                          InstagramPageOpener._launchInstagram()
+                        }
+                    ),
                     SizedBox(width: 20),
-                    SvgPicture.asset('assets/image/utb.svg',
+                    InkWell(
+                    child: SvgPicture.asset('assets/image/utb.svg',
                       semanticsLabel: 'My SVG Picture',
                       width: 20,
                       height: 20,
                     ),
+                        onTap: () => {
+                          _openYouTubeChannel()
+                    }
+                    ),
                     SizedBox(width: 20),
-                    SvgPicture.asset('assets/image/link.svg',
+                    InkWell(
+                    child: SvgPicture.asset('assets/image/link.svg',
                       semanticsLabel: 'My SVG Picture',
                       width: 20,
                       height: 20,
+                    ),
+                      onTap: () => _launchURL("https://www.linkedin.com/company/ahsproperties/"),
                     ),
                     SizedBox(width: 20),
                   ],
@@ -399,6 +431,53 @@ class _VideoPlayerScreenState extends State<Contactus> {
     );
   }
 
+  Future<void> _sendEmail() async {
+    final emailAddress = 'info@ahs-properties.com';
+
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: emailAddress,
+    );
+
+    try {
+      if (await canLaunch(emailUri.toString())) {
+        await launch(emailUri.toString());
+      } else {
+        throw 'Could not launch email';
+      }
+    } catch (e) {
+      print('Error sending email: $e');
+    }
+  }
+
+  Future<void> _makePhoneCall() async {
+    final phoneNumber = '+97144581821';
+
+    try {
+      if (await canLaunch('tel:$phoneNumber')) {
+        await launch('tel:$phoneNumber');
+      } else {
+        throw 'Could not launch phone call';
+      }
+    } catch (e) {
+      print('Error making phone call: $e');
+    }
+  }
+
+  Future<void> _openYouTubeChannel() async {
+    final channelUrl = "https://www.youtube.com/@ahsproperties";
+
+    try {
+      if (await canLaunch(channelUrl)) {
+        await launch(channelUrl);
+      } else {
+        throw "Could not launch $channelUrl";
+      }
+    } catch (e) {
+      print("Error opening YouTube channel: $e");
+    }
+  }
+
   Set<Marker> getmarkers() { //markers to place on map
     setState(() {
       markers.add(Marker( //add first marker
@@ -432,6 +511,80 @@ class _VideoPlayerScreenState extends State<Contactus> {
     } else {
       throw 'Could not launch $mapurl';
     }
+  }
+
+  void sendEmail(BuildContext context) {
+    final String name = nameController.text;
+    final String email = emailController.text;
+    final String phone = phoneController.text;
+    final String message = messageController.text;
+
+    if (name.isEmpty) {
+      _showError(context, "Enter Name");
+      return;
+    } else if (email.isEmpty) {
+      _showError(context, "Enter Email");
+      return;
+    } else if (phone.isEmpty) {
+      _showError(context, "Enter Mobile number");
+      return;
+    } else if (!_isValidEmail(email)) {
+      _showError(context, "Enter valid email id");
+      return;
+    } else if (!_isValidPhoneNumber(phone)) {
+      _showError(context, "Enter valid mobile number");
+      return;
+    } else {
+      _launchEmailIntent(context, email, message);
+      _showThankYouMessage(context);
+      return;
+    }
+  }
+
+  void _showError(BuildContext context, String errorMessage) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(errorMessage),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _showThankYouMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          "Thank you for contacting us, a representative from our team will get back to you shortly!",
+        ),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  void _launchEmailIntent(BuildContext context, String email, String message) {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: 'info@ahs-properties.com',
+      queryParameters: {'subject': 'Enquiry', 'body': message},
+    );
+
+    launchUrl(Uri.parse(emailUri.toString()));
+  }
+
+  bool _isValidEmail(String email) {
+    final RegExp emailRegex =
+    RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
+  bool _isValidPhoneNumber(String phoneNumber) {
+    final RegExp phoneRegex = RegExp(
+      r'^(\+[0-9]+[- \.]*)?'         // +<digits><sdd>*
+      r'(\([0-9]+\)[- \.]*)?'       // (<digits>)<sdd>*
+      r'([0-9][0-9\- \.]+[0-9])$',  // <digits><sdd>*<digits>
+    );
+
+    return phoneRegex.hasMatch(phoneNumber);
   }
 
   Widget _buildTextField({
@@ -484,5 +637,44 @@ class _VideoPlayerScreenState extends State<Contactus> {
         ),
       ),
     );
+  }
+}
+
+class FacebookPageOpener {
+  static Future<void> openFacebookPage() async {
+    final pageUrl = "https://www.facebook.com/people/AHS-Properties/100083320485787/";
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+      final versionCode = int.tryParse(packageInfo.buildNumber);
+
+      print("The versionCode is: $versionCode");
+      if (versionCode != null && versionCode >= 1) {
+        final url = "fb://facewebmodal/f?href=$pageUrl";
+        await launchUrl(Uri.parse(url));
+      } else {
+        final url = "fb://page/people/AHS-Properties/100083320485787/";
+        await launchUrl(Uri.parse(url));
+      }
+    } catch (e) {
+      await launchUrl(Uri.parse(pageUrl));
+    }
+  }
+}
+
+class InstagramPageOpener {
+  static Future<void> _launchInstagram() async {
+    final instagramProfile = "ahs.properties";
+    final uriForApp = "http://instagram.com/_u/$instagramProfile";
+    final uriForBrowser = "http://instagram.com/$instagramProfile";
+
+    try {
+      if (await canLaunch(uriForApp)) {
+        await launch(uriForApp);
+      } else {
+        await launch(uriForBrowser);
+      }
+    } catch (e) {
+      print("Error launching Instagram: $e");
+    }
   }
 }
