@@ -47,7 +47,11 @@ class _VideoPlayerScreenState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
+      body: Container(
+        child: Center(
+          child: VideoPlayer(_controller),
+        ),
+      ),/*FutureBuilder(
         future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -61,7 +65,7 @@ class _VideoPlayerScreenState extends State<Home> {
             );
           }
         },
-      ),
+      ),*/
     );
   }
 }
