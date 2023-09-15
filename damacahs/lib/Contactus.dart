@@ -147,7 +147,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
                             ),
                             VerticalDivider(
                               thickness: 1,
-                              width: 50,
+                              width: 60,
                               color: ColorConstants.kPrimaryColor,
                             ),
                             Container(
