@@ -251,30 +251,43 @@ class _VideoPlayerScreenState extends State<Contactus> {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(left: 4.0),
-                child: Column(
-                  children: [
-                    TextButton(
-                      child: Text("SEND MESSAGE",
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.only(left: 4.0),
+                  child: Column(
+                    children: [
+                      TextButton(
+                        child: Text(
+                          "SEND MESSAGE",
                           textAlign: TextAlign.left,
-                          style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
-                      onPressed: () {},
-                    ),
-                  ],
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.kLiteBlack,
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Container(
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
                 width: 60.0,
                 height: 1.0,
-                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                margin: EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 10.0),
                 color: ColorConstants.kPrimaryColor,
               ),
+              ),
               Container(
-                padding: EdgeInsets.only(top:10.0),
+                margin: EdgeInsets.only(left: 8.0),
+                padding: EdgeInsets.only(top:20.0),
                   child: Row(
                     children: [
-                      SizedBox(width: 20),
                       SvgPicture.asset('assets/image/ph.svg',
                         semanticsLabel: 'My SVG Picture',
                         width: 20,
@@ -296,8 +309,11 @@ class _VideoPlayerScreenState extends State<Contactus> {
                     ],
                   ),
               ),
-              Container(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
                 padding: EdgeInsets.only(left: 4.0),
+                margin: EdgeInsets.only(top: 10.0),
                 child: Column(
                   children: [
                     TextButton(
@@ -309,17 +325,21 @@ class _VideoPlayerScreenState extends State<Contactus> {
                   ],
                 ),
               ),
-              Container(
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
                 width: 60.0,
                 height: 1.0,
-                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                margin: EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 10.0),
                 color: ColorConstants.kPrimaryColor,
               ),
+          ),
               Container(
-                padding: EdgeInsets.only(top:10.0),
+                padding: EdgeInsets.only(top:20.0),
+                margin: EdgeInsets.only(left: 8.0),
                 child: Row(
                   children: [
-                    SizedBox(width: 20),
                     SvgPicture.asset('assets/image/fb.svg',
                       semanticsLabel: 'My SVG Picture',
                       width: 20,
@@ -347,8 +367,11 @@ class _VideoPlayerScreenState extends State<Contactus> {
                   ],
                 ),
               ),
-              Container(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
                 padding: EdgeInsets.only(left: 4.0),
+                margin: EdgeInsets.only(top: 10.0),
                 child: Column(
                   children: [
                     TextButton(
@@ -360,12 +383,16 @@ class _VideoPlayerScreenState extends State<Contactus> {
                   ],
                 ),
               ),
-              Container(
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
                 width: 60.0,
                 height: 1.0,
-                margin: EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 10.0),
+                margin: EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 30.0),
                 color: ColorConstants.kPrimaryColor,
               ),
+          ),
             ],
           ),
         )

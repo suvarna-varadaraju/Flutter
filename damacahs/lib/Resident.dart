@@ -1,4 +1,5 @@
 import 'package:chewie/chewie.dart';
+import 'package:damacahs/Contactus.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
@@ -463,19 +464,32 @@ class _VideoPlayerScreenState extends State<Resident> {
                     ]),
 
                 Container(
-                  padding: EdgeInsets.fromLTRB(10.0,20.0,20.0,10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          children: <Widget>[
-                            Divider(
-                                color: ColorConstants.kPrimaryColor
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                  padding: EdgeInsets.fromLTRB(10.0,30.0,20.0,10.0),
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 4,
+                      primary: Colors.black,
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  Contactus()),
+                      );
+                    },
+                    child: Text(
+                      'ENQUIRE NOW',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
