@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 import 'Contactus.dart';
+import 'ProjectBrochures.dart';
 
 class Villas extends StatefulWidget {
   Villas({super.key});
@@ -162,7 +163,12 @@ class _VideoPlayerScreenState extends State<Villas> {
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () { Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectBrochures(type: "searenity"),
+                                  ),
+                                );},
                                 child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
@@ -288,7 +294,12 @@ class _VideoPlayerScreenState extends State<Villas> {
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () { Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectBrochures(type: "amara"),
+                                  ),
+                                );},
                                 child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
@@ -415,7 +426,12 @@ class _VideoPlayerScreenState extends State<Villas> {
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () { Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectBrochures(type: "sunrays"),
+                                  ),
+                                );},
                                 child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
@@ -542,7 +558,12 @@ class _VideoPlayerScreenState extends State<Villas> {
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () { Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectBrochures(type: "serene"),
+                                  ),
+                                );},
                                 child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
@@ -669,7 +690,12 @@ class _VideoPlayerScreenState extends State<Villas> {
                           Padding(
                               padding: EdgeInsets.only(top: 10.0,right: 10.0),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () { Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProjectBrochures(type: "azalea"),
+                                  ),
+                                );},
                                 child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
