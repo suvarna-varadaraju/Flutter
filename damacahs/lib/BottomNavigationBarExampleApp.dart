@@ -1,11 +1,9 @@
-import 'package:damacahs/MapSample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'About.dart';
 import 'Contactus.dart';
 import 'Home.dart';
 import 'Resident.dart';
-import 'VideoPlayer.dart';
 import 'Villas.dart';
 
 class BottomNavigationBarExampleApp extends StatelessWidget {
@@ -128,7 +126,6 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
         showUnselectedLabels: true,
         currentIndex: _currentIndex,
         onTap: (index) {
-
           setState(() {
             _currentIndex = index;
             startShakeAnimation();

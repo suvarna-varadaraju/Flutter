@@ -107,7 +107,7 @@ class _VideoPlayerScreenState extends State<About> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                                                                                                                                                                                                                                                                                                                                                                                padding: const EdgeInsets.all(10.0),
               ),
               Container(
                 child: const Column(
