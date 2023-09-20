@@ -13,6 +13,10 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  flutter_pdfview: ^1.0.0
+
+  syncfusion_flutter_pdfviewer: ^23.1.36
+
   video_player: ^2.7.1
 
   chewie: ^1.7.0
@@ -22,6 +26,8 @@ dependencies:
   timeline_tile: ^2.0.0
 
   google_maps_flutter: ^2.5.0
+
+  dropdown_button2: ^2.3.8
 
   http: ^1.1.0
   json_serializable: ^6.7.1
@@ -86,3 +92,4 @@ flutter:
     - assets/image/about_ash1.jpg
     - assets/image/history_2017.jpg
     - assets/image/logo.jpg
+    - assets/image/menu.png

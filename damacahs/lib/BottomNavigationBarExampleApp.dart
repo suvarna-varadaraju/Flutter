@@ -1,11 +1,9 @@
-import 'package:damacahs/MapSample.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'About.dart';
 import 'Contactus.dart';
 import 'Home.dart';
 import 'Resident.dart';
-import 'VideoPlayer.dart';
 import 'Villas.dart';
 
 class BottomNavigationBarExampleApp extends StatelessWidget {

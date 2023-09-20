@@ -16,7 +16,7 @@ class _VideoPlayerScreenState extends State<Home> {
 
   void initState() {
     super.initState();
-    double _aspectRatio = 16 / 9;
+    double _aspectRatio = 9 / 16;
     _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
@@ -47,10 +47,13 @@ class _VideoPlayerScreenState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: VideoPlayer(_controller),
-        ),
+      body: Stack(
+        children: [
+          Container(
+              width: double.infinity,
+              height: double.infinity,
+              child: VideoPlayer(_controller)),
+        ],
       ),/*FutureBuilder(
         future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {

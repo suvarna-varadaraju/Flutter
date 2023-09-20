@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:damacahs/Contactus.dart';
+import 'package:damacahs/ProjectBrochures.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
@@ -181,7 +182,14 @@ class _VideoPlayerScreenState extends State<Resident> {
                         Padding(
                           padding: EdgeInsets.only(top: 10.0,right: 10.0),
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProjectBrochures(type: "casacanal"),
+                                ),
+                              );
+                            },
                             child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                             style: OutlinedButton.styleFrom(
                                 shape: StadiumBorder(),
@@ -310,7 +318,12 @@ class _VideoPlayerScreenState extends State<Resident> {
                       Padding(
                           padding: EdgeInsets.only(top: 10.0,right: 10.0),
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProjectBrochures(type: "onecanal"),
+                              ),
+                            );},
                             child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                             style: OutlinedButton.styleFrom(
                                 shape: StadiumBorder(),
@@ -439,7 +452,12 @@ class _VideoPlayerScreenState extends State<Resident> {
                       Padding(
                           padding: EdgeInsets.only(top: 10.0,right: 10.0),
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProjectBrochures(type: "onecresent"),
+                              ),
+                            );},
                             child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
                             style: OutlinedButton.styleFrom(
                                 shape: StadiumBorder(),
