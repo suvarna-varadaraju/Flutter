@@ -61,6 +61,13 @@ class _VideoPlayerScreenState extends State<Contactus> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: ColorConstants.kPrimaryColor,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: const Text(
             'Contact us',
             style: TextStyle(
