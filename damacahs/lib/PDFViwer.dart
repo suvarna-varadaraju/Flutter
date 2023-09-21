@@ -1,126 +1,29 @@
-import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 
 class PDFViwer extends StatefulWidget {
-  String type;
-  PDFViwer({required this.type});
+  String pdfUrl;
+  String projectType;
+  PDFViwer({required this.pdfUrl,required this.projectType});
 
   @override
-  State<PDFViwer> createState() => _VideoPlayerScreenState(type);
+  State<PDFViwer> createState() => _VideoPlayerScreenState(pdfUrl,projectType);
 }
 
 class _VideoPlayerScreenState extends State<PDFViwer> {
-  final String myString;
+  final String pdfUrl;
+  final String projectType;
   bool isListViewOpen = false;
-  _VideoPlayerScreenState(this.myString);
-  String imageVideo = "image";
-  late VideoPlayerController _controller;
-  late ChewieController _chewieController;
-  late Future<void> _initializeVideoPlayerFuture;
-  late List<String> casaCanal = [];
-  late List<String> oneCanal = [];
-  late List<String> oneCrescent = [];
-  late List<String> serenity = [];
-  late List<String> amara = [];
-  late List<String> serene = [];
-  late List<String> alzea = [];
-  late List<String> sunRays = [];
+  _VideoPlayerScreenState(this.pdfUrl,this.projectType);
 
   void initState() {
     super.initState();
-    double _aspectRatio = 16 / 9;
-
-    if(myString == "casacanal"){
-      imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
-      _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
-    }else if(myString == "onecanal"){
-      imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
-      _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
-    }else if(myString == "onecresent"){
-      imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
-      _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
-    }else if(myString == "searenity"){
-      imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/serenity.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
-      _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
-    }
+    print('pdfUrl email: $pdfUrl');
   }
 
   @override
   void dispose() {
-    _controller.dispose();
-    _chewieController.dispose();
     super.dispose();
   }
 
@@ -130,18 +33,17 @@ class _VideoPlayerScreenState extends State<PDFViwer> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          color: ColorConstants.kPrimaryColor,// Left arrow icon
+          color: ColorConstants.kPrimaryColor,
           onPressed: () {
-            // Handle the back button press or navigation here
-            Navigator.pop(context); // Example: Navigate back
+            Navigator.pop(context);
           },
         ),
-        title: const Text(
-          'Residental',
+        title: Text(
+          getTitleBasedOnString(projectType),
           style: TextStyle(
             color: ColorConstants.kPrimaryColor,
-            fontFamily: 'Montserrat',// Text color
-            fontSize: 24, // Font size
+            fontFamily: 'Montserrat',
+            fontSize: 24,
             fontWeight: FontWeight.bold, // Font weight
           ),
         ),
@@ -158,9 +60,54 @@ class _VideoPlayerScreenState extends State<PDFViwer> {
         ],
       ),
       body: SfPdfViewer.network(
-        'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',
+          pdfUrl,
+          //initialScrollOffset: Offset(0, 500),
+          //initialZoomLevel: 2,
+          pageSpacing: 3,
+          //canShowScrollHead: true,
+          //canShowScrollStatus: true,
+          //canShowPaginationDialog: true,
+          //canShowPageLoadingIndicator: false,
+        onDocumentLoadFailed: (PdfDocumentLoadFailedDetails details) {
+          showErrorDialog(context, details.error, details.description);
+        },
       ),
     );
+  }
+
+  void showErrorDialog(BuildContext context, String error, String description) {
+    showDialog<dynamic>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(error),
+            content: Text(description),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  String getTitleBasedOnString(String myString) {
+    if (myString == "searenity") {
+      return "Villas";
+    } else if (myString == "amara") {
+      return "Villas";
+    } else if (myString == "sunrays") {
+      return "Villas";
+    } else if (myString == "serene") {
+      return "Villas";
+    } else if (myString == "azalea") {
+      return "Villas";
+    } else {
+      return "Residential"; // You can provide a default title for other cases
+    }
   }
 
 }

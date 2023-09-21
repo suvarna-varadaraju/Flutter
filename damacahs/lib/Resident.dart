@@ -17,6 +17,8 @@ class _VideoPlayerScreenState extends State<Resident> {
   late ChewieController _chewieController;
   PageController _pageController = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
   int _currentPage = 0;
+  double _scale = 1.0;
+  bool _isZoomed = false;
 
   void initState() {
     super.initState();
@@ -37,6 +39,25 @@ class _VideoPlayerScreenState extends State<Resident> {
       // If the video is paused, play it.
       _controller.play();
     }
+    _startAnimation();
+  }
+
+  void _startAnimation() {
+    Future.delayed(Duration(seconds: 5), () {
+      if (mounted) {
+        setState(() {
+          _scale = _scale == 1.0 ? 1.5 : 1.0; // Toggle between 1.0 and 1.5 scale
+          _startAnimation();
+        });
+      }
+     /* if (mounted) {
+        setState(() {
+          _isZoomed = !_isZoomed;
+          _scale = _isZoomed ? 1.2 : 1.0;
+          _startAnimation();
+        });
+      }*/
+    });
   }
 
   @override
@@ -113,43 +134,118 @@ class _VideoPlayerScreenState extends State<Resident> {
                   children: [
                     Container(
                         width: double.infinity,
-                        decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/casacanal_4.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*  child: AnimatedContainer(
+                        duration: Duration(seconds: 10),
+                        transform: Matrix4.diagonal3Values(_scale, _scale, 1.0),
+                          decoration: const BoxDecoration(
+                            color: Colors.white, // Container background color
+                            image: DecorationImage(
+                              image: AssetImage('assets/image/casacanal_4.jpg'), // Replace with your image asset path
+                              fit: BoxFit.cover, // Adjust how the image fits the container
+                            ),
+                          ),
+                      ),*/
+                        /*decoration: const BoxDecoration(
                           color: Colors.white, // Container background color
                           image: DecorationImage(
                             image: AssetImage('assets/image/casacanal_4.jpg'), // Replace with your image asset path
                             fit: BoxFit.cover, // Adjust how the image fits the container
                           ),
-                        ),
+                        ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/casacanal_1.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                     /* decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/casacanal_1.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/casacanal_2.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    /*  decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/casacanal_2.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/casacanal_5.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                     /* decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/casacanal_5.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                   ],
                 ),
@@ -167,7 +263,7 @@ class _VideoPlayerScreenState extends State<Resident> {
           ),
           //fourth layout
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(6.0),
           ),
           Container(
               padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -249,43 +345,107 @@ class _VideoPlayerScreenState extends State<Resident> {
                   children: [
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecanal_new1.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                     /* decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecanal_new1.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecanal_new2.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecanal_new2.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecanal_new3.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecanal_new3.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecanal_6.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecanal_6.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                   ],
                 ),
@@ -303,7 +463,7 @@ class _VideoPlayerScreenState extends State<Resident> {
           ),
           //five layout
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(6.0),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -344,7 +504,7 @@ class _VideoPlayerScreenState extends State<Resident> {
                 Row(
                     children: [
                       Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                      Text(": \$350 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                      Text(": \$400 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                     ]),
 
                 Container(
@@ -383,43 +543,107 @@ class _VideoPlayerScreenState extends State<Resident> {
                   children: [
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecrescent_new.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                     /* decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecrescent_new.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecresecent_2.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecresecent_2.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecresecent_3.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                     /* decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecresecent_3.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                     Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      child: TweenAnimationBuilder(
+                        duration: Duration(seconds: 9),
+                        tween: Tween<double>(begin: 1.0, end: _scale),
+                        builder: (context, scale, child) {
+                          return Transform.scale(
+                            scale: scale,
+                            child: child,
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/image/onecresecent_4.jpg', // Replace with your image URL
+                          width: double.infinity, // Set the initial width of the image
+                          height: 200, // Set the initial height of the image
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      /*decoration: const BoxDecoration(
                         color: Colors.white, // Container background color
                         image: DecorationImage(
                           image: AssetImage('assets/image/onecresecent_4.jpg'), // Replace with your image asset path
                           fit: BoxFit.cover, // Adjust how the image fits the container
                         ),
-                      ),
+                      ),*/
                     ),
                   ],
                 ),
@@ -437,7 +661,7 @@ class _VideoPlayerScreenState extends State<Resident> {
           ),
           //five layout
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(6.0),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),

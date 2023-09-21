@@ -19,6 +19,8 @@ dependencies:
 
   video_player: ^2.7.1
 
+  flutter_shakemywidget: ^1.0.4+1
+
   chewie: ^1.7.0
 
   flutter_svg: ^2.0.5
@@ -78,7 +80,7 @@ flutter:
     - assets/image/onecresecent_3.jpg
     - assets/image/onecresecent_4.jpg
     - assets/image/villa_serenity1.jpg
-    - assets/image/villa_serenity.jpg
+    - assets/image/villa_serenity2.jpg
     - assets/image/villa_amara2.jpg
     - assets/image/villa_amara1.jpg
     - assets/image/villa_sunrays2.jpg
@@ -91,5 +93,10 @@ flutter:
     - assets/image/about_ahs.jpg
     - assets/image/about_ash1.jpg
     - assets/image/history_2017.jpg
+    - assets/image/history_2018.jpg
+    - assets/image/history_2019.jpg
+    - assets/image/history_2020.jpg
+    - assets/image/history_2021.jpg
+    - assets/image/historu_2022.jpg
     - assets/image/logo.jpg
     - assets/image/menu.png

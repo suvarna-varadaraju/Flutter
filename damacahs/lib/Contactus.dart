@@ -21,8 +21,8 @@ class _VideoPlayerScreenState extends State<Contactus> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
 
-  final Set<Marker> markers = new Set(); //markers for google map
-  static const LatLng showLocation = const LatLng(25.182683, 55.248041); //location to show in map
+  final Set<Marker> markers = new Set();
+  static const LatLng showLocation = const LatLng(25.182683, 55.248041);
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();

@@ -1,6 +1,8 @@
 import 'package:chewie/chewie.dart';
+import 'package:damacahs/location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'Colours.dart';
 import 'PDFViwer.dart';
@@ -16,7 +18,9 @@ class ProjectBrochures extends StatefulWidget {
 class _VideoPlayerScreenState extends State<ProjectBrochures> {
   final String myString;
   bool isListViewOpen = false;
+
   _VideoPlayerScreenState(this.myString);
+
   String imageVideo = "image";
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
@@ -34,9 +38,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
     super.initState();
     double _aspectRatio = 16 / 9;
 
-    if(myString == "casacanal"){
+    if (myString == "casacanal") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
+      _controller =
+          VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
       _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
@@ -54,9 +59,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
       } else {
         _controller.play();
       }
-    }else if(myString == "onecanal"){
+    } else if (myString == "onecanal") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
+      _controller =
+          VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
       _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
@@ -74,9 +80,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
       } else {
         _controller.play();
       }
-    }else if(myString == "onecresent"){
+    } else if (myString == "onecresent") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
+      _controller =
+          VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
       _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
@@ -94,7 +101,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
       } else {
         _controller.play();
       }
-    }else if(myString == "searenity"){
+    } else if (myString == "searenity") {
       imageVideo = "video";
       _controller = VideoPlayerController.asset("assets/video/serenity.mp4");
       _initializeVideoPlayerFuture = _controller.initialize();
@@ -128,11 +135,18 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: ColorConstants.kPrimaryColor,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           getTitleBasedOnString(myString),
-        style: TextStyle(
+          style: TextStyle(
             color: ColorConstants.kPrimaryColor,
-            fontFamily: 'Montserrat',// Text color
+            fontFamily: 'Montserrat', // Text color
             fontSize: 24, // Font size
             fontWeight: FontWeight.bold, // Font weight
           ),
@@ -140,54 +154,16 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
         centerTitle: true, // Center the title horizontally
         backgroundColor: Colors.white, // AppBar background color
       ),
-        body: Center(
-          child: Stack(
-            children: <Widget>[
-              imageVideo == "image" ?
-              _getImageBackground() :
-              _getVideoBackground(),
-              _getContent(),
-            ],
-          ),
+      body: Center(
+        child: Stack(
+          children: <Widget>[
+            imageVideo == "image" ?
+            _getImageBackground() :
+            _getVideoBackground(),
+            _getContent(),
+          ],
         ),
-       /* body: Center(
-          child : Column(
-            children: [
-              _getVideoBackground(),
-              _getBackgroundColor(),
-              _getContent(),
-          Container(
-            padding: EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: ColorConstants.transparent, // Set your desired color here
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(0),
-              ),
-            ),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 32.0),
-                  child: SvgPicture.asset('assets/image/casacanal_01.svg',
-                    semanticsLabel: 'My SVG Picture',
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-              ),
-              Image.asset(
-                'assets/image/menu.png', // Replace with your right image path
-                width: 40, // Adjust the width as needed
-                height: 40, // Adjust the height as needed
-              ),
-            ],
-          ),
-        ),
-            ],
-          ),
-        )*/
+      ),
     );
   }
 
@@ -202,14 +178,14 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
     casaCanal.add("Website");
   }
 
-  void initOneCanalList(){
+  void initOneCanalList() {
     oneCanal.add("Project Brouchure");
     oneCanal.add("Fact Sheet");
     oneCanal.add("Location");
     oneCanal.add("Website");
   }
 
-  void initOneCresecentList(){
+  void initOneCresecentList() {
     oneCrescent.add("Project Brouchure");
     oneCrescent.add("Fact Sheet");
     oneCrescent.add("6 Bedroom sky palace villa");
@@ -217,31 +193,31 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
     oneCrescent.add("Website");
   }
 
-  void initSerenityList(){
+  void initSerenityList() {
     serenity.add("Project Brouchure");
     serenity.add("Location");
     serenity.add("Website");
   }
 
-  void initAmaraList(){
+  void initAmaraList() {
     amara.add("Project Brouchure");
     amara.add("Location");
     amara.add("Website");
   }
 
-  void initSunraysList(){
+  void initSunraysList() {
     sunRays.add("Project Brouchure");
     sunRays.add("Location");
     sunRays.add("Website");
   }
 
-  void initSereneList(){
+  void initSereneList() {
     serene.add("Project Brouchure");
     serene.add("Location");
     serene.add("Website");
   }
 
-  void initAlzeaList(){
+  void initAlzeaList() {
     alzea.add("Project Brouchure");
     alzea.add("Location");
     alzea.add("Website");
@@ -268,8 +244,6 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   _getContent() {
-    casaCanal.clear();
-    initCasaCanalList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -311,9 +285,9 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
             ),
           ),
         ),
-    if (isListViewOpen)
-    Expanded(
-    child: getCard(getProjectTypeBasedOnList())),
+        if (isListViewOpen)
+          Expanded(
+              child: getCard(getProjectTypeBasedOnList())),
       ],
     );
   }
@@ -397,7 +371,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   String getBackgroundImageBasedOnString() {
-   if (myString == "amara") {
+    if (myString == "amara") {
       return "assets/image/villa_amara1.jpg";
     } else if (myString == "sunrays") {
       return "assets/image/villa_sunrays1.jpg";
@@ -411,9 +385,8 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   getCard(List<String> projectType) {
-    //ItemVO model = mainList[position];
-
-    if (projectType == "casacanal") {
+    print('pdfUrl email projectType : $projectType');
+    if (myString == "casacanal") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -423,7 +396,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -449,23 +422,40 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString)));
                 } else if (projectType[index] == 'Fact Sheet') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1oGXsanurgp6_MMiJtsb7E7qT8FT5rppX',projectType: myString)));
                 } else if (projectType[index] == '3 Bedroom sky villa') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1MAnKv8ASoKeVP6NtwttBB4eEe7c7hXb3',projectType: myString)));
                 } else if (projectType[index] == '4 Bedroom sky villa') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf',projectType: myString)));
                 } else if (projectType[index] == '5 Bedroom sky villa') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
-                } else if (projectType[index] == '6 Bedroom sky villa mansion') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1ie3KMLMsxvcbtmZCw9D4mL2VxHqqbJtd',projectType: myString)));
+                } else
+                if (projectType[index] == '6 Bedroom sky villa mansion') {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1am1wjHuBopyHvr09hi_CXw19eqdV9N34',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://casacanal.com/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(
+                      pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -473,7 +463,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "onecanal") {
+    } else if (myString == "onecanal") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -483,7 +473,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -509,15 +499,22 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString)));
                 } else if (projectType[index] == 'Fact Sheet') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=10Tn9zOic398Dw1Wpj-d4ToylDfK0Svn-',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/one-canal/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -525,7 +522,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "onecresent") {
+    } else if (myString == "onecresent") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -535,7 +532,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -561,17 +558,27 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString)));
                 } else if (projectType[index] == 'Fact Sheet') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1_dYSmr0c8nfplPsQ_gHNR-eYipVeY4Bs',projectType: myString)));
                 } else if (projectType[index] == '6 Bedroom sky palace villa') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
-                }else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1sDHt8KdQ1Bu90FpXUvs-1UxB7YLhK_Iy',projectType: myString)));
+                } else if (projectType[index] == 'Location') {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://1onecrescent.com/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -579,7 +586,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "amara") {
+    } else if (myString == "amara") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -589,7 +596,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -615,13 +622,18 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/amara/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -629,7 +641,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "sunrays") {
+    } else if (myString == "sunrays") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -639,7 +651,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -665,13 +677,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/sun-rays/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -679,7 +697,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "serene") {
+    } else if (myString == "serene") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -689,7 +707,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -715,13 +733,18 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/serene/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(
+                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -729,7 +752,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "azalea") {
+    } else if (myString == "azalea") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -739,7 +762,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -765,13 +788,18 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      PDFViwer(
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/azalea/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(
+                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -779,7 +807,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else if (myString == "searenity") {
+    } else if (myString == "searenity") {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -789,7 +817,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -815,13 +843,16 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(
+                      pdfUrl: "https://ahs-properties.com/wp-content/uploads/2023/05/K70-SeaRenity-Brochure_compressed.pdf",projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  _launchURL("https://ahs-properties.com/project/searenity/");
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -829,7 +860,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
         ),
       );
-    }else{
+    } else {
       return Container(
         color: ColorConstants.listbg,
         child: ListView.separated(
@@ -839,7 +870,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
           },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
-              child : Container(
+              child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
@@ -865,13 +896,17 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
               onTap: () {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
                 } else if (projectType[index] == 'Location') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
                 } else if (projectType[index] == 'Website') {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
                 } else {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PDFViwer(type: "casacanal")));
+                  Navigator.push(context, MaterialPageRoute(builder: (
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -881,4 +916,12 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
       );
     }
   }
+
+  _launchURL(String mapurl) async {
+    if (await canLaunchUrl(Uri.parse(mapurl))) {
+      await launchUrl(Uri.parse(mapurl));
+    } else {
+      throw 'Could not launch $mapurl';
+    }
   }
+}

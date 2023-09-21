@@ -18,6 +18,7 @@ class _VideoPlayerScreenState extends State<Villas> {
   late ChewieController _chewieController;
   PageController _pageController = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
   int _currentPage = 0;
+  double _scale = 1.0;
 
   void initState() {
     super.initState();
@@ -38,6 +39,25 @@ class _VideoPlayerScreenState extends State<Villas> {
       // If the video is paused, play it.
       _controller.play();
     }
+    _startAnimation();
+  }
+
+  void _startAnimation() {
+    Future.delayed(Duration(seconds: 5), () {
+      if (mounted) {
+        setState(() {
+          _scale = _scale == 1.0 ? 1.5 : 1.0; // Toggle between 1.0 and 1.5 scale
+          _startAnimation();
+        });
+      }
+      /* if (mounted) {
+        setState(() {
+          _isZoomed = !_isZoomed;
+          _scale = _isZoomed ? 1.2 : 1.0;
+          _startAnimation();
+        });
+      }*/
+    });
   }
 
   @override
@@ -114,23 +134,55 @@ class _VideoPlayerScreenState extends State<Villas> {
                       children: [
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_serenity2.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                         /* decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_serenity1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_serenity1.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        /*  decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_serenity.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
@@ -148,7 +200,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //fourth layout
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -245,23 +297,55 @@ class _VideoPlayerScreenState extends State<Villas> {
                       children: [
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_amara2.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_amara2.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_amara1.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_amara1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
@@ -279,7 +363,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -377,23 +461,55 @@ class _VideoPlayerScreenState extends State<Villas> {
                       children: [
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_sunrays2.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_sunrays2.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_sunrays1.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_sunrays1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
@@ -411,7 +527,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -509,23 +625,55 @@ class _VideoPlayerScreenState extends State<Villas> {
                       children: [
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_serene2.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_serene2.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_serene1.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                         /* decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_serene1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
@@ -543,7 +691,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -641,23 +789,55 @@ class _VideoPlayerScreenState extends State<Villas> {
                       children: [
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_azalea1.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                         /* decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_azalea1.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                         Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          child: TweenAnimationBuilder(
+                            duration: Duration(seconds: 9),
+                            tween: Tween<double>(begin: 1.0, end: _scale),
+                            builder: (context, scale, child) {
+                              return Transform.scale(
+                                scale: scale,
+                                child: child,
+                              );
+                            },
+                            child: Image.asset(
+                              'assets/image/villa_azalea2.jpg', // Replace with your image URL
+                              width: double.infinity, // Set the initial width of the image
+                              height: 200, // Set the initial height of the image
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          /*decoration: const BoxDecoration(
                             color: Colors.white, // Container background color
                             image: DecorationImage(
                               image: AssetImage('assets/image/villa_azalea2.jpg'), // Replace with your image asset path
                               fit: BoxFit.cover, // Adjust how the image fits the container
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
@@ -675,7 +855,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(6.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
