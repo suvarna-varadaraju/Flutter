@@ -167,9 +167,6 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
               setState(() {
                 _currentIndex = index;
                 shakeKey.currentState?.shake();
-
-                /* _pageController.animateToPage(index,
-                duration: Duration(milliseconds: 500), curve: Curves.easeOut);*/
               });
             }
         ),
