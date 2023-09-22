@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 class Home extends StatefulWidget {
@@ -13,11 +14,40 @@ class _VideoPlayerScreenState extends State<Home> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
   late Future<void> _initializeVideoPlayerFuture;
+  double _aspectRatio = 9 / 16;
 
   void initState() {
     super.initState();
-    double _aspectRatio = 9 / 16;
     _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
+    _chewieController = ChewieController(
+      allowedScreenSleep: false,
+      allowFullScreen: true,
+      deviceOrientationsAfterFullScreen: [
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ],
+      videoPlayerController: _controller,
+      aspectRatio: _aspectRatio,
+      autoPlay: true,
+      looping: true,
+      showControls: false,
+    );
+    _chewieController.addListener(() {
+      if (_chewieController.isFullScreen) {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+      } else {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+      }
+    });
+/*    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _chewieController = ChewieController(
@@ -34,27 +64,41 @@ class _VideoPlayerScreenState extends State<Home> {
       _controller.pause();
     } else {
       _controller.play();
-    }
+    }*/
   }
 
   @override
   void dispose() {
     _controller.dispose();
     _chewieController.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+            child: VideoPlayer(_controller),
+         /* child: Chewie(
+            controller: _chewieController,
+          ),*/
+        ),
+      ),
+      /*body: Stack(
         children: [
           Container(
               width: double.infinity,
               height: double.infinity,
               child: VideoPlayer(_controller)),
         ],
-      ),/*FutureBuilder(
+      ),*//*FutureBuilder(
         future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {

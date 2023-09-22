@@ -6,17 +6,19 @@ import 'Colours.dart';
 class PDFViwer extends StatefulWidget {
   String pdfUrl;
   String projectType;
-  PDFViwer({required this.pdfUrl,required this.projectType});
+  String downloadUrl;
+  PDFViwer({required this.pdfUrl,required this.projectType, required this.downloadUrl});
 
   @override
-  State<PDFViwer> createState() => _VideoPlayerScreenState(pdfUrl,projectType);
+  State<PDFViwer> createState() => _VideoPlayerScreenState(pdfUrl,projectType,downloadUrl);
 }
 
 class _VideoPlayerScreenState extends State<PDFViwer> {
   final String pdfUrl;
   final String projectType;
+  final String download;
   bool isListViewOpen = false;
-  _VideoPlayerScreenState(this.pdfUrl,this.projectType);
+  _VideoPlayerScreenState(this.pdfUrl,this.projectType,this.download);
 
   void initState() {
     super.initState();
@@ -54,7 +56,7 @@ class _VideoPlayerScreenState extends State<PDFViwer> {
           IconButton(
             icon: Icon(Icons.download,color: ColorConstants.kPrimaryColor), // Right-side image icon
             onPressed: () {
-              _launchURL("https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS");
+              _launchURL(download);
             },
           ),
         ],

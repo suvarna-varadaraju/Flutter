@@ -424,30 +424,30 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                 } else if (projectType[index] == 'Fact Sheet') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1oGXsanurgp6_MMiJtsb7E7qT8FT5rppX',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1oGXsanurgp6_MMiJtsb7E7qT8FT5rppX',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1oGXsanurgp6_MMiJtsb7E7qT8FT5rppX")));
                 } else if (projectType[index] == '3 Bedroom sky villa') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1MAnKv8ASoKeVP6NtwttBB4eEe7c7hXb3',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1MAnKv8ASoKeVP6NtwttBB4eEe7c7hXb3',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1MAnKv8ASoKeVP6NtwttBB4eEe7c7hXb3")));
                 } else if (projectType[index] == '4 Bedroom sky villa') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf")));
                 } else if (projectType[index] == '5 Bedroom sky villa') {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1ie3KMLMsxvcbtmZCw9D4mL2VxHqqbJtd',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1ie3KMLMsxvcbtmZCw9D4mL2VxHqqbJtd',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1ie3KMLMsxvcbtmZCw9D4mL2VxHqqbJtd")));
                 } else
                 if (projectType[index] == '6 Bedroom sky villa mansion') {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1am1wjHuBopyHvr09hi_CXw19eqdV9N34',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1am1wjHuBopyHvr09hi_CXw19eqdV9N34',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1am1wjHuBopyHvr09hi_CXw19eqdV9N34")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -455,7 +455,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (
                       context) => PDFViwer(
-                      pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString)));
+                      pdfUrl: 'https://drive.google.com/uc?export=view&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -501,11 +501,11 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0")));
                 } else if (projectType[index] == 'Fact Sheet') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=10Tn9zOic398Dw1Wpj-d4ToylDfK0Svn-',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=10Tn9zOic398Dw1Wpj-d4ToylDfK0Svn-',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=10Tn9zOic398Dw1Wpj-d4ToylDfK0Svn-")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -514,7 +514,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1qvwpS2ENyNaMTHA_dA4m6CdmP-MizEX0")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -560,16 +560,16 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0")));
                 } else if (projectType[index] == 'Fact Sheet') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1_dYSmr0c8nfplPsQ_gHNR-eYipVeY4Bs',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1_dYSmr0c8nfplPsQ_gHNR-eYipVeY4Bs',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1_dYSmr0c8nfplPsQ_gHNR-eYipVeY4Bs")));
                 } else if (projectType[index] == '6 Bedroom sky palace villa') {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1sDHt8KdQ1Bu90FpXUvs-1UxB7YLhK_Iy',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1sDHt8KdQ1Bu90FpXUvs-1UxB7YLhK_Iy',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1sDHt8KdQ1Bu90FpXUvs-1UxB7YLhK_Iy")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -578,7 +578,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString)));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=11ySZcVsPIyGCQmqHAaDYtdtpvRCWz2K0")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -624,7 +624,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -633,7 +633,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/Amara-L22-EMRHLS-AHS-Properties-1_compressed.pdf")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -680,7 +680,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -689,7 +689,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/C128-Sun-Rays-Brochure_compressed.pdf")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -736,7 +736,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -744,7 +744,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (
                       context) => PDFViwer(
-                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString)));
+                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/K73-Serene-Brochure_compressed.pdf")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -791,7 +791,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       PDFViwer(
-                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString)));
+                          pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
@@ -799,7 +799,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (
                       context) => PDFViwer(
-                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString)));
+                      pdfUrl: 'https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf',projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/N49-Azalea-Brochure_compressed.pdf")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -845,14 +845,14 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(builder: (
                       context) => PDFViwer(
-                      pdfUrl: "https://ahs-properties.com/wp-content/uploads/2023/05/K70-SeaRenity-Brochure_compressed.pdf",projectType: myString)));
+                      pdfUrl: "https://ahs-properties.com/wp-content/uploads/2023/05/K70-SeaRenity-Brochure_compressed.pdf",projectType: myString,downloadUrl:"https://ahs-properties.com/wp-content/uploads/2023/05/K70-SeaRenity-Brochure_compressed.pdf")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => location(latlong: myString)));
                 } else if (projectType[index] == 'Website') {
                   _launchURL("https://ahs-properties.com/project/searenity/");
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (
-                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString,downloadUrl: "https://ahs-properties.com/wp-content/uploads/2023/05/K70-SeaRenity-Brochure_compressed.pdf")));
                   print('Tapped: ${projectType[index]}');
                 }
               },
@@ -897,16 +897,16 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 // Check the condition and navigate accordingly
                 if (projectType[index] == 'Project Brouchure') {
                   Navigator.push(context, MaterialPageRoute(builder: (
-                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                 } else if (projectType[index] == 'Location') {
                   Navigator.push(context, MaterialPageRoute(builder: (
-                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                 } else if (projectType[index] == 'Website') {
                   Navigator.push(context, MaterialPageRoute(builder: (
-                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                 } else {
                   Navigator.push(context, MaterialPageRoute(builder: (
-                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString)));
+                      context) => PDFViwer(pdfUrl: "casacanal",projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS")));
                   print('Tapped: ${projectType[index]}');
                 }
               },

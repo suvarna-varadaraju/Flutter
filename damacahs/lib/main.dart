@@ -1,6 +1,7 @@
 import 'package:damacahs/BottomNavigationBarExampleApp.dart';
-import 'package:damacahs/anim.dart';
 import 'package:flutter/material.dart';
+
+import 'VideoPlayerScreen.dart';
 
 void main() async {
   runApp(MyApp());

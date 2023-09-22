@@ -23,17 +23,7 @@ dependencies:
 
   flutter_downloader: ^1.11.2
 
-  path_provider: ^2.1.1
-
-  downloads_path_provider_28: ^0.1.2
-
-  open_file: ^3.3.2
-
-  flutter_local_notifications: ^15.1.1
-
   dio: ^5.3.3
-
-  permission_handler: ^8.1.2
 
   chewie: ^1.7.0
 

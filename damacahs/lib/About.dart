@@ -154,7 +154,7 @@ class _VideoPlayerScreenState extends State<About> {
                       SizedBox(height: 10),
                       Padding(
                         padding: EdgeInsets.all(15), //apply padding to all four sides
-                        child: Text("Established in 2017 under Mr. Abbas Sajwani's vision, AHS Group is a global real estate and investment leader. AHS Ventures, founded in 2018, drives diverse successful ventures, all aimed at enhancing residential communities worldwide.",
+                        child: Text("Born from the visionary mind of Mr. Abbas Sajwani in 2017, AHS Group stands as a global powerhouse in real estate and investment. Within this dynamic conglomerate, AHS Ventures emerged in 2018 with a singular mission: to spearhead a range of diverse and triumphant ventures, all with the shared goal of elevating residential communities on a global scale. As a torchbearer of innovation and excellence, AHS Ventures is committed to shaping a brighter, more prosperous future for communities worldwide.",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
                       ),
