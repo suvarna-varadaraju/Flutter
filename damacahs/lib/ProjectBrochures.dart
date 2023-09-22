@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:damacahs/location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
@@ -25,6 +26,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
   late Future<void> _initializeVideoPlayerFuture;
+  double _aspectRatio = 9 / 16;
   late List<String> casaCanal = [];
   late List<String> oneCanal = [];
   late List<String> oneCrescent = [];
@@ -36,13 +38,38 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
 
   void initState() {
     super.initState();
-    double _aspectRatio = 16 / 9;
-
     if (myString == "casacanal") {
-      imageVideo = "video";
-      _controller =
-          VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
+       imageVideo = "video";
+      _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
+      _chewieController = ChewieController(
+        //allowedScreenSleep: false,
+        //allowFullScreen: true,
+        deviceOrientationsAfterFullScreen: [
+          DeviceOrientation.landscapeRight,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ],
+        videoPlayerController: _controller,
+        aspectRatio: _aspectRatio,
+        autoPlay: true,
+        looping: true,
+        showControls: false,
+      );
+      _chewieController.addListener(() {
+        if (_chewieController.isFullScreen) {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+        } else {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+        }
+      });
+  /*    _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
         videoPlayerController: _controller,
@@ -58,12 +85,39 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
         _controller.pause();
       } else {
         _controller.play();
-      }
+      }*/
     } else if (myString == "onecanal") {
       imageVideo = "video";
-      _controller =
-          VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
+      _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
+      _chewieController = ChewieController(
+        //allowedScreenSleep: false,
+        //allowFullScreen: true,
+        deviceOrientationsAfterFullScreen: [
+          DeviceOrientation.landscapeRight,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ],
+        videoPlayerController: _controller,
+        //aspectRatio: _aspectRatio,
+        autoPlay: true,
+        looping: true,
+        showControls: false,
+      );
+      _chewieController.addListener(() {
+        if (_chewieController.isFullScreen) {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+        } else {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+        }
+      });
+/*      _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
         videoPlayerController: _controller,
@@ -79,11 +133,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
         _controller.pause();
       } else {
         _controller.play();
-      }
+      }*/
     } else if (myString == "onecresent") {
       imageVideo = "video";
-      _controller =
-          VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
+      _controller = VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
       _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
@@ -110,7 +163,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
         videoPlayerController: _controller,
         looping: true,
         allowFullScreen: true,
-        zoomAndPan: true,
+        //zoomAndPan: true,
         aspectRatio: _aspectRatio,
         showControls: false,
       );
@@ -128,6 +181,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   void dispose() {
     _controller.dispose();
     _chewieController.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 
@@ -224,8 +281,15 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   _getVideoBackground() {
-    return Container(
-      child: VideoPlayer(_controller),
+    return SafeArea(
+    child: Container(
+    width: double.infinity,
+    height: double.infinity,
+    child: VideoPlayer(_controller),
+    /* child: Chewie(
+            controller: _chewieController,
+          ),*/
+    ),
     );
   }
 
