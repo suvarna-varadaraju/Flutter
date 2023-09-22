@@ -75,5 +75,7 @@
     </array>
     <key>com.apple.security.network.client</key>
     <true/>
+    <key>UIFileSharingEnabled</key>
+    	<true/>
 </dict>
 </plist>

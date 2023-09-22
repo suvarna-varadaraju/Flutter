@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'Colours.dart';
 
 class PDFViwer extends StatefulWidget {
@@ -53,8 +54,7 @@ class _VideoPlayerScreenState extends State<PDFViwer> {
           IconButton(
             icon: Icon(Icons.download,color: ColorConstants.kPrimaryColor), // Right-side image icon
             onPressed: () {
-              // Handle the right-side image button press here
-              // Example: Open a menu or perform an action
+              _launchURL("https://drive.google.com/uc?export=download&id=1bHEqUg_838mxnLfx8OnKMfFU7vjmSlCS");
             },
           ),
         ],
@@ -110,5 +110,12 @@ class _VideoPlayerScreenState extends State<PDFViwer> {
     }
   }
 
+  _launchURL(String mapurl) async {
+    if (await canLaunchUrl(Uri.parse(mapurl))) {
+      await launchUrl(Uri.parse(mapurl));
+    } else {
+      throw 'Could not launch $mapurl';
+    }
+  }
 }
 
