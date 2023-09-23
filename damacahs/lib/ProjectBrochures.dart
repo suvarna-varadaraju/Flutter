@@ -26,7 +26,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   late VideoPlayerController _controller;
   late ChewieController _chewieController;
   late Future<void> _initializeVideoPlayerFuture;
-  double _aspectRatio = 9 / 16;
+  double _aspectRatio = 16/9;
   late List<String> casaCanal = [];
   late List<String> oneCanal = [];
   late List<String> oneCrescent = [];
@@ -41,12 +41,10 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
     if (myString == "casacanal") {
        imageVideo = "video";
       _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
-      _chewieController = ChewieController(
+      /*_chewieController = ChewieController(
         //allowedScreenSleep: false,
         //allowFullScreen: true,
         deviceOrientationsAfterFullScreen: [
-          DeviceOrientation.landscapeRight,
-          DeviceOrientation.landscapeLeft,
           DeviceOrientation.portraitUp,
           DeviceOrientation.portraitDown,
         ],
@@ -68,8 +66,8 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
             DeviceOrientation.portraitDown,
           ]);
         }
-      });
-  /*    _initializeVideoPlayerFuture = _controller.initialize();
+      });*/
+      _initializeVideoPlayerFuture = _controller.initialize();
       _controller.setLooping(true);
       _chewieController = ChewieController(
         videoPlayerController: _controller,
@@ -85,7 +83,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
         _controller.pause();
       } else {
         _controller.play();
-      }*/
+      }
     } else if (myString == "onecanal") {
       imageVideo = "video";
       _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
@@ -281,16 +279,30 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   _getVideoBackground() {
-    return SafeArea(
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return AspectRatio(
+            aspectRatio: 9/16,
+            child: VideoPlayer(_controller),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );/*SafeArea(
     child: Container(
     width: double.infinity,
     height: double.infinity,
     child: VideoPlayer(_controller),
-    /* child: Chewie(
+    *//* child: Chewie(
             controller: _chewieController,
-          ),*/
+          ),*//*
     ),
-    );
+    );*/
   }
 
   _getImageBackground() {

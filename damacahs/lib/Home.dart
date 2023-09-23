@@ -12,19 +12,58 @@ class Home extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<Home> {
   late VideoPlayerController _controller;
+
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4")
+      ..initialize().then((value) => {setState(() {})});
+    _controller.setLooping(true);
+    _controller.setVolume(0.0);
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: _controller.value.size?.width ?? 0,
+                height: _controller.value.size?.height ?? 0,
+                child: VideoPlayer(_controller),
+              ),
+            ),
+          ),
+          //FURTHER IMPLEMENTATION
+        ],
+      ),
+
+    );
+  }
+}
+
+/*class _VideoPlayerScreenState extends State<Home> {
+  late VideoPlayerController _controller;
   late ChewieController _chewieController;
   late Future<void> _initializeVideoPlayerFuture;
   double _aspectRatio = 9 / 16;
 
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
+    _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
     _chewieController = ChewieController(
       allowedScreenSleep: false,
       allowFullScreen: true,
       deviceOrientationsAfterFullScreen: [
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft,
         DeviceOrientation.portraitUp,
         DeviceOrientation.portraitDown,
       ],
@@ -47,7 +86,7 @@ class _VideoPlayerScreenState extends State<Home> {
         ]);
       }
     });
-/*    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
+*//*    _controller = VideoPlayerController.asset("assets/video/ash_video.mp4");
     _initializeVideoPlayerFuture = _controller.initialize();
     _controller.setLooping(true);
     _chewieController = ChewieController(
@@ -64,7 +103,7 @@ class _VideoPlayerScreenState extends State<Home> {
       _controller.pause();
     } else {
       _controller.play();
-    }*/
+    }*//*
   }
 
   @override
@@ -86,19 +125,19 @@ class _VideoPlayerScreenState extends State<Home> {
           width: double.infinity,
           height: double.infinity,
             child: VideoPlayer(_controller),
-         /* child: Chewie(
+         *//* child: Chewie(
             controller: _chewieController,
-          ),*/
+          ),*//*
         ),
       ),
-      /*body: Stack(
+      *//*body: Stack(
         children: [
           Container(
               width: double.infinity,
               height: double.infinity,
               child: VideoPlayer(_controller)),
         ],
-      ),*//*FutureBuilder(
+      ),*//**//*FutureBuilder(
         future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -112,7 +151,7 @@ class _VideoPlayerScreenState extends State<Home> {
             );
           }
         },
-      ),*/
+      ),*//*
     );
   }
-}
+}*/

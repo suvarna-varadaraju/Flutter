@@ -14,8 +14,6 @@ class About extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<About> {
   late VideoPlayerController _controller;
-  late ChewieController _chewieController;
-  PageController _pageController = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
   Color _containerColor2017 = ColorConstants.kPrimaryColor;
   Color _containerColor2018 = ColorConstants.lite_gold;
   Color _containerColor2019 = ColorConstants.lite_gold;
@@ -24,35 +22,22 @@ class _VideoPlayerScreenState extends State<About> {
   Color _containerColor2022 = ColorConstants.lite_gold;
   Color _containerColor2023 = ColorConstants.lite_gold;
   String _currentImage = 'assets/image/history_2017.jpg';
-  String _currentText = "AHS Group was established in 2017 with a clear vision for making a positive impact on residential communities. "
-      "The founder, Mr. Abbas Sajwani, lead the company with a passion for enriching people's lives. AHS Group sought to inspire and empower individuals through its innovative solutions and services.";
+  String _currentText = "AHS Group was established in 2017 with a clear vision for making a positive impact on residential communities.\n\n" +
+      "The founder, Mr. Abbas Sajwani, lead the company with a passion for enriching people's lives.\n\n" +
+      "AHS Group sought to inspire and empower individuals through its innovative solutions and services.";
 
   void initState() {
     super.initState();
-    double _aspectRatio = 16 / 9;
-    _controller = VideoPlayerController.asset("assets/video/histroy.mp4");
-    _controller.initialize();
+    _controller = VideoPlayerController.asset("assets/video/histroy.mp4")
+    ..initialize().then((value) => {setState(() {})});
     _controller.setLooping(true);
-    _chewieController = ChewieController(
-      videoPlayerController: _controller,
-      looping: true,
-      aspectRatio: _aspectRatio,
-      showControls: false,
-    );
-
-    if (_controller.value.isPlaying) {
-      _controller.pause();
-    } else {
-      // If the video is paused, play it.
-      _controller.play();
-    }
+    _controller.setVolume(0.0);
+    _controller.play();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _chewieController.dispose();
-    _pageController.dispose();
     super.dispose();
   }
 
@@ -61,7 +46,7 @@ class _VideoPlayerScreenState extends State<About> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            'About us',
+            'About Us',
             style: TextStyle(
               color: ColorConstants.kPrimaryColor,
               fontFamily: 'Montserrat',// Text color
@@ -77,7 +62,7 @@ class _VideoPlayerScreenState extends State<About> {
             children: [
               Container(
                 width: double.infinity,
-                height: 280, // Set the height as needed
+                height: 300, // Set the height as needed
                 child: VideoPlayer(_controller),
               ),
               Container(
@@ -103,36 +88,7 @@ class _VideoPlayerScreenState extends State<About> {
                   ),
                   )
               ),
-              Container(
-                width: double.infinity,
-                height: 300,
-                decoration: const BoxDecoration(
-                  color: Colors.white, // Container background color
-                  image: DecorationImage(
-                    image: AssetImage('assets/image/casacanal_1.jpg'), // Replace with your image asset path
-                    fit: BoxFit.cover, // Adjust how the image fits the container
-                  ),
-                ),
-              ),
-              Padding(
-                                                                                                                                                                                                                                                                                                                                                                                padding: const EdgeInsets.all(10.0),
-              ),
-              Container(
-                child: const Column(
-                    children: [
-                      Text("AHS PROPERTIES", style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: EdgeInsets.all(15), //apply padding to all four sides
-                        child: Text("AHS Properties redefines luxury living, worth \$1.5B. In a year, they achieved milestones: sold 3 Palm Jumeirah villas for \$475M, launched another for \$45M. Leading ultra-luxury with new projects at \$700M in Dubai Water Canal, Palm Jumeirah. Sold 3 villas for \$75M, GDP stays at \$1.5B. Unveiled \$45M Emirates Hills mansion, a new opulent era.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
-                      ),
-                    ]),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-              ),
+
               Container(
                 width: double.infinity,
                 height: 300,
@@ -156,7 +112,7 @@ class _VideoPlayerScreenState extends State<About> {
                         padding: EdgeInsets.all(15), //apply padding to all four sides
                         child: Text("Born from the visionary mind of Mr. Abbas Sajwani in 2017, AHS Group stands as a global powerhouse in real estate and investment. Within this dynamic conglomerate, AHS Ventures emerged in 2018 with a singular mission: to spearhead a range of diverse and triumphant ventures, all with the shared goal of elevating residential communities on a global scale. As a torchbearer of innovation and excellence, AHS Ventures is committed to shaping a brighter, more prosperous future for communities worldwide.",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                       ),
                     ]),
               ),
@@ -186,7 +142,37 @@ class _VideoPlayerScreenState extends State<About> {
                         padding: EdgeInsets.all(15), //apply padding to all four sides
                         child: Text("Founded in 2020, AHS Investments strives to create wealth and value through diverse investments in private and public equities. With a portfolio exceeding \$150 million, they exemplify commitment to innovation and expansion across various businesses and corporate entities.",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
+                      ),
+                    ]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                width: double.infinity,
+                height: 300,
+                decoration: const BoxDecoration(
+                  color: Colors.white, // Container background color
+                  image: DecorationImage(
+                    image: AssetImage('assets/image/casacanal_1.jpg'), // Replace with your image asset path
+                    fit: BoxFit.cover, // Adjust how the image fits the container
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+              ),
+              Container(
+                child: const Column(
+                    children: [
+                      Text("AHS PROPERTIES", style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.all(15), //apply padding to all four sides
+                        child: Text("AHS Properties redefines luxury living, worth \$1.5B. In a year, they achieved milestones: sold 3 Palm Jumeirah villas for \$475M, launched another for \$45M. Leading ultra-luxury with new projects at \$700M in Dubai Water Canal, Palm Jumeirah. Sold 3 villas for \$75M, GDP stays at \$1.5B. Unveiled \$45M Emirates Hills mansion, a new opulent era.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                       ),
                     ]),
               ),
@@ -216,7 +202,7 @@ class _VideoPlayerScreenState extends State<About> {
                         padding: EdgeInsets.all(15), //apply padding to all four sides
                         child: Text("AHS Group excels in real estate, prioritizing excellence, innovation, and service. A leading player, it provides remarkable value to stakeholders and clients.",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                       ),
                     ]),
               ),
@@ -234,7 +220,6 @@ class _VideoPlayerScreenState extends State<About> {
                         cardWidget(image: "assets/image/history_2017.jpg"),
                         Container(
                           width: 200.0,
-                          height: 200.0,
                           margin: EdgeInsets.only(top: 20),
                           child: Text(
                             _currentText,
@@ -243,6 +228,7 @@ class _VideoPlayerScreenState extends State<About> {
                               color: Colors.black,
                               fontSize: 12,
                               fontFamily: 'montserrat',
+                              fontWeight: FontWeight.w300,
                             ),
                           ),
                         ),
@@ -307,6 +293,7 @@ class _VideoPlayerScreenState extends State<About> {
                     "2017",
                     style: TextStyle(
                       color: ColorConstants.kPrimaryColor,
+                      fontFamily: 'Montserrat',
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -344,6 +331,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -380,6 +368,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -416,6 +405,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -452,6 +442,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -488,6 +479,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -525,6 +517,7 @@ class _VideoPlayerScreenState extends State<About> {
                   style: TextStyle(
                     color: ColorConstants.kPrimaryColor,
                     fontSize: 16,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -643,7 +636,8 @@ class _VideoPlayerScreenState extends State<About> {
       _containerColor2022 = ColorConstants.lite_gold;
       _containerColor2023 = ColorConstants.kPrimaryColor;
       _currentImage = 'assets/image/casacanal_1.jpg';
-      _currentText = "In 2023, AHS Properties launched an extraordinary project called Casa Canal, marking a significant milestone in architectural innovation. This groundbreaking development combines cutting-edge design, sustainable technology, and unparalleled luxury. Situated alongside a serene canal, Casa Canal offers residents a harmonious blend of natural beauty and urban sophistication. The meticulously crafted residences boast spacious layouts, state-of-the-art amenities, and breathtaking views, providing an unmatched living experience.";
+      _currentText = "In 2023, AHS Properties launched an extraordinary project called Casa Canal,marking a significant milestone in architectural innovation.\n\n" +
+          "This groundbreaking development combines cutting-edge design, sustainable technology, and unparalleled luxury. Situated alongside a serene canal.\n\n" + "Casa Canal offers residents a harmonious blend of natural beauty and urban sophistication. \n\n"+"The meticulously crafted residences boast spacious layouts, state-of-the-art amenities, and breathtaking views, providing an unmatched living experience.";
     });
   }
 }

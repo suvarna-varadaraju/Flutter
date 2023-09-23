@@ -19,7 +19,6 @@ class Contactus extends StatefulWidget {
 class _VideoPlayerScreenState extends State<Contactus> {
   late GoogleMapController mapController;
   late VideoPlayerController _controller;
-  late ChewieController _chewieController;
 
   final Set<Marker> markers = new Set();
   static const LatLng showLocation = const LatLng(25.182683, 55.248041);
@@ -31,29 +30,16 @@ class _VideoPlayerScreenState extends State<Contactus> {
   void initState() {
     super.initState();
     getmarkers();
-    double _aspectRatio = 16 / 9;
-    _controller = VideoPlayerController.asset("assets/video/aboutcompany.mp4");
-    _controller.initialize();
+    _controller = VideoPlayerController.asset("assets/video/aboutcompany.mp4")
+    ..initialize().then((value) => {setState(() {})});
     _controller.setLooping(true);
-    _chewieController = ChewieController(
-      videoPlayerController: _controller,
-      looping: true,
-      aspectRatio: _aspectRatio,
-      showControls: false,
-    );
-
-    if (_controller.value.isPlaying) {
-      _controller.pause();
-    } else {
-      // If the video is paused, play it.
-      _controller.play();
-    }
+    _controller.setVolume(0.0);
+    _controller.play();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _chewieController.dispose();
     super.dispose();
   }
 
@@ -85,7 +71,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
             children: [
               Container(
                 width: double.infinity,
-                height: 280, // Set the height as needed
+                height: 300, // Set the height as needed
                 child: VideoPlayer(_controller),
               ),
               Padding(
@@ -95,12 +81,12 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 child: const Column(
                     children: [
                       Text("PHONE", style: TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
-                      SizedBox(height: 6),
+                      SizedBox(height: 4),
                       Padding(
                         padding: EdgeInsets.all(15), //apply padding to all four sides
                         child: Text("+971 44581821",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                       ),
                     ]),
               ),
@@ -111,12 +97,12 @@ class _VideoPlayerScreenState extends State<Contactus> {
                 child: Column(
                     children: [
                       Text("EMAIL", style: const TextStyle(fontSize: 16,fontFamily: 'Montserrat',fontWeight: FontWeight.bold,color: ColorConstants.kLiteBlack)),
-                      SizedBox(height: 6),
+                      SizedBox(height: 4),
                       Padding(
                         padding: EdgeInsets.all(15), //apply padding to all four sides
                         child: Text("info@ahsproperties.com",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w200,color: Colors.black)),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                       ),
                     ]),
               ),
@@ -146,7 +132,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
                                     Text(
                                       'Damac Executive \nHeights, 23rd floor \nTecom, Dubai',
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 12,fontFamily: 'Montserrat',fontWeight: FontWeight.normal,color: ColorConstants.kLiteBlack),
+                                      style: const TextStyle(fontSize: 12,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: ColorConstants.kLiteBlack),
                                     ),
                                   ],
                                 ),
@@ -171,7 +157,7 @@ class _VideoPlayerScreenState extends State<Contactus> {
                                     Text(
                                       'City Walk, Building 5, \nUnit 2, Happiness \nStreet, Dubai',
                                       textAlign: TextAlign.center,
-                                      style: const TextStyle(fontSize: 12,fontFamily: 'Montserrat',fontWeight: FontWeight.normal,color: ColorConstants.kLiteBlack),
+                                      style: const TextStyle(fontSize: 12,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: ColorConstants.kLiteBlack),
                                     ),
                                   ],
                                 ),

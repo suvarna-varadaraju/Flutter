@@ -15,30 +15,25 @@ class Villas extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<Villas> {
   late VideoPlayerController _controller;
-  late ChewieController _chewieController;
   PageController _pageController = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
+  PageController _pageController1 = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
+  PageController _pageController2 = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
+  PageController _pageController3 = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
+  PageController _pageController4 = PageController(initialPage: 0, viewportFraction: 1.0, keepPage: true);
   int _currentPage = 0;
+  int _currentPage1 = 0;
+  int _currentPage2 = 0;
+  int _currentPage3 = 0;
+  int _currentPage4 = 0;
   double _scale = 1.0;
 
   void initState() {
     super.initState();
-    double _aspectRatio = 16 / 9;
-    _controller = VideoPlayerController.asset("assets/video/serenity.mp4");
-    _controller.initialize();
+    _controller = VideoPlayerController.asset("assets/video/serenity.mp4")
+    ..initialize().then((value) => {setState(() {})});
     _controller.setLooping(true);
-    _chewieController = ChewieController(
-      videoPlayerController: _controller,
-      looping: true,
-      aspectRatio: _aspectRatio,
-      showControls: false,
-    );
-
-    if (_controller.value.isPlaying) {
-      _controller.pause();
-    } else {
-      // If the video is paused, play it.
-      _controller.play();
-    }
+    _controller.setVolume(0.0);
+    _controller.play();
     _startAnimation();
   }
 
@@ -63,8 +58,11 @@ class _VideoPlayerScreenState extends State<Villas> {
   @override
   void dispose() {
     _controller.dispose();
-    _chewieController.dispose();
     _pageController.dispose();
+    _pageController1.dispose();
+    _pageController2.dispose();
+    _pageController3.dispose();
+    _pageController4.dispose();
     super.dispose();
   }
 
@@ -89,7 +87,7 @@ class _VideoPlayerScreenState extends State<Villas> {
             children: [
               Container(
                 width: double.infinity,
-                height: 280, // Set the height as needed
+                height: 300, // Set the height as needed
                 child: VideoPlayer(_controller),
               ),
               // Second layout
@@ -200,7 +198,7 @@ class _VideoPlayerScreenState extends State<Villas> {
               ),
               //fourth layout
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(2.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -221,7 +219,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                                     builder: (context) => ProjectBrochures(type: "searenity"),
                                   ),
                                 );},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
+                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
                                     side: BorderSide(color: ColorConstants.kPrimaryColor)
@@ -229,36 +227,35 @@ class _VideoPlayerScreenState extends State<Villas> {
                               )
                           ),
                         ]),
-                    SizedBox(height: 5),
 
                     Row(
                         children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": K70 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
+                          Text("Location", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": K70 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black))
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$35 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Project Value", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": \$35 Million",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Size", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Size:", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     Row(
                         children: [
-                          Text("       ", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" Plot 15,000S qFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("       ", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text("  Plot 15,000 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(children: [
-                          Text("Status: Available", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
+                          Text("Status: Available", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
                           //Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                         ]),
                     Container(
@@ -288,10 +285,10 @@ class _VideoPlayerScreenState extends State<Villas> {
                   children: [
                     // Horizontal ScrollView
                     PageView(
-                      controller: _pageController,
+                      controller: _pageController1,
                       onPageChanged: (index) {
                         setState(() {
-                          _currentPage = index;
+                          _currentPage1 = index;
                         });
                       },
                       children: [
@@ -358,12 +355,12 @@ class _VideoPlayerScreenState extends State<Villas> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(2, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
+                      (index) => buildIndicator1(index),
                 ),
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(2.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -384,7 +381,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                                     builder: (context) => ProjectBrochures(type: "amara"),
                                   ),
                                 );},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
+                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
                                     side: BorderSide(color: ColorConstants.kPrimaryColor)
@@ -392,36 +389,35 @@ class _VideoPlayerScreenState extends State<Villas> {
                               )
                           ),
                         ]),
-                    SizedBox(height: 5),
 
                     Row(
                         children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": L22 Emairate Hills",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
+                          Text("Location", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": L22 Emairate Hills",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black))
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$45 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Project Value", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": \$45 Million",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Size", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" BUA 45,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Size:", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(" BUA 45,000 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     Row(
                         children: [
-                          Text("       ", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" Plot 45,000S qFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("       ", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text("  Plot 45,000 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(children: [
-                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
+                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
                       //Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                     ]),
 
@@ -452,10 +448,10 @@ class _VideoPlayerScreenState extends State<Villas> {
                   children: [
                     // Horizontal ScrollView
                     PageView(
-                      controller: _pageController,
+                      controller: _pageController2,
                       onPageChanged: (index) {
                         setState(() {
-                          _currentPage = index;
+                          _currentPage2 = index;
                         });
                       },
                       children: [
@@ -522,12 +518,12 @@ class _VideoPlayerScreenState extends State<Villas> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(2, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
+                      (index) => buildIndicator2(index),
                 ),
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(2.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -548,7 +544,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                                     builder: (context) => ProjectBrochures(type: "sunrays"),
                                   ),
                                 );},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
+                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
                                     side: BorderSide(color: ColorConstants.kPrimaryColor)
@@ -556,36 +552,35 @@ class _VideoPlayerScreenState extends State<Villas> {
                               )
                           ),
                         ]),
-                    SizedBox(height: 5),
 
                     Row(
                         children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": C128 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
+                          Text("Location", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": C128 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black))
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Project Value", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Size", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Size:", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     Row(
                         children: [
-                          Text("       ", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" Plot 10,500S qFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("       ", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text("  Plot 10,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(children: [
-                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
+                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
                       //Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                     ]),
 
@@ -616,10 +611,10 @@ class _VideoPlayerScreenState extends State<Villas> {
                   children: [
                     // Horizontal ScrollView
                     PageView(
-                      controller: _pageController,
+                      controller: _pageController3,
                       onPageChanged: (index) {
                         setState(() {
-                          _currentPage = index;
+                          _currentPage3 = index;
                         });
                       },
                       children: [
@@ -686,12 +681,12 @@ class _VideoPlayerScreenState extends State<Villas> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(2, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
+                      (index) => buildIndicator3(index),
                 ),
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(2.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -712,7 +707,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                                     builder: (context) => ProjectBrochures(type: "serene"),
                                   ),
                                 );},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
+                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
                                     side: BorderSide(color: ColorConstants.kPrimaryColor)
@@ -720,36 +715,35 @@ class _VideoPlayerScreenState extends State<Villas> {
                               )
                           ),
                         ]),
-                    SizedBox(height: 5),
 
                     Row(
                         children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": K73 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
+                          Text("Location", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": K73 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black))
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Project Value", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Size", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Size:", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     Row(
                         children: [
-                          Text("       ", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" Plot 10,500S qFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("       ", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text("  Plot 10,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(children: [
-                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
+                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
                       //Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                     ]),
 
@@ -780,10 +774,10 @@ class _VideoPlayerScreenState extends State<Villas> {
                   children: [
                     // Horizontal ScrollView
                     PageView(
-                      controller: _pageController,
+                      controller: _pageController4,
                       onPageChanged: (index) {
                         setState(() {
-                          _currentPage = index;
+                          _currentPage4 = index;
                         });
                       },
                       children: [
@@ -850,12 +844,12 @@ class _VideoPlayerScreenState extends State<Villas> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(2, // Replace with the number of pages you have
-                      (index) => buildIndicator(index),
+                      (index) => buildIndicator4(index),
                 ),
               ),
               //five layout
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(2.0),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(10.0,10.0,0.0,20.0),
@@ -876,7 +870,7 @@ class _VideoPlayerScreenState extends State<Villas> {
                                     builder: (context) => ProjectBrochures(type: "azalea"),
                                   ),
                                 );},
-                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.normal, color: ColorConstants.kPrimaryColor)),
+                                child: Text('View Project',textAlign: TextAlign.center,style: TextStyle(fontSize: 14, fontFamily: 'Montserrat', fontWeight: FontWeight.bold, color: ColorConstants.kPrimaryColor)),
                                 style: OutlinedButton.styleFrom(
                                     shape: StadiumBorder(),
                                     side: BorderSide(color: ColorConstants.kPrimaryColor)
@@ -884,36 +878,35 @@ class _VideoPlayerScreenState extends State<Villas> {
                               )
                           ),
                         ]),
-                    SizedBox(height: 5),
 
                     Row(
                         children: [
-                          Text("Location", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": N49 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black))
+                          Text("Location", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": N49 Palm Jumeirah",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black))
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Project Value", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Project Value", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(": \$25 Million",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(
                         children: [
-                          Text("Size", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("Size:", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text(" BUA 13,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     Row(
                         children: [
-                          Text("       ", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
-                          Text(" Plot 10,500 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
+                          Text("       ", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
+                          Text("  Plot 10,500 SqFt",style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w300,color: Colors.black)),
                         ]),
                     SizedBox(height: 4),
 
                     Row(children: [
-                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: Colors.black)),
+                      Text("Status: Sold", style: const TextStyle(fontSize: 14,fontFamily: 'Montserrat',fontWeight: FontWeight.w500,color: Colors.black)),
                       //Text(" BUA 17,000 SqFt",style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w200,color: Colors.black)),
                     ]),
 
@@ -963,6 +956,54 @@ class _VideoPlayerScreenState extends State<Villas> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: index == _currentPage ? ColorConstants.kPrimaryColor : Colors.black12,
+      ),
+    );
+  }
+
+  Widget buildIndicator1(int index) {
+    return Container(
+      width: 8.0,
+      height: 8.0,
+      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: index == _currentPage1 ? ColorConstants.kPrimaryColor : Colors.black12,
+      ),
+    );
+  }
+
+  Widget buildIndicator2(int index) {
+    return Container(
+      width: 8.0,
+      height: 8.0,
+      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: index == _currentPage2 ? ColorConstants.kPrimaryColor : Colors.black12,
+      ),
+    );
+  }
+
+  Widget buildIndicator3(int index) {
+    return Container(
+      width: 8.0,
+      height: 8.0,
+      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: index == _currentPage3 ? ColorConstants.kPrimaryColor : Colors.black12,
+      ),
+    );
+  }
+
+  Widget buildIndicator4(int index) {
+    return Container(
+      width: 8.0,
+      height: 8.0,
+      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: index == _currentPage4 ? ColorConstants.kPrimaryColor : Colors.black12,
       ),
     );
   }

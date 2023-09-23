@@ -192,8 +192,8 @@ class _BottomNavigationBarExampleState extends State<BottomNavigationBarExample>
         child: SvgPicture.asset(
           svgAssetPathAction,
           semanticsLabel: 'My SVG Picture',
-          width: 26,
-          height: 26,
+          width: 28,
+          height: 28,
         ),
       ),
       backgroundColor: Colors.white,

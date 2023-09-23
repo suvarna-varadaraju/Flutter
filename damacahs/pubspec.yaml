@@ -13,8 +13,6 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  flutter_pdfview: ^1.0.0
-
   syncfusion_flutter_pdfviewer: ^23.1.36
 
   video_player: ^2.7.1
