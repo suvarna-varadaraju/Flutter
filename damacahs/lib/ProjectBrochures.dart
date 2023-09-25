@@ -24,9 +24,6 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
 
   String imageVideo = "image";
   late VideoPlayerController _controller;
-  late ChewieController _chewieController;
-  late Future<void> _initializeVideoPlayerFuture;
-  double _aspectRatio = 16/9;
   late List<String> casaCanal = [];
   late List<String> oneCanal = [];
   late List<String> oneCrescent = [];
@@ -40,149 +37,38 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
     super.initState();
     if (myString == "casacanal") {
        imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4");
-      /*_chewieController = ChewieController(
-        //allowedScreenSleep: false,
-        //allowFullScreen: true,
-        deviceOrientationsAfterFullScreen: [
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ],
-        videoPlayerController: _controller,
-        aspectRatio: _aspectRatio,
-        autoPlay: true,
-        looping: true,
-        showControls: false,
-      );
-      _chewieController.addListener(() {
-        if (_chewieController.isFullScreen) {
-          SystemChrome.setPreferredOrientations([
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ]);
-        } else {
-          SystemChrome.setPreferredOrientations([
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ]);
-        }
-      });*/
-      _initializeVideoPlayerFuture = _controller.initialize();
-      _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
+      _controller = VideoPlayerController.asset("assets/video/casacanal_5sec.mp4")
+         ..initialize().then((value) => {setState(() {})});
+       _controller.setLooping(true);
+       _controller.setVolume(0.0);
+       _controller.play();
     } else if (myString == "onecanal") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4");
-      _chewieController = ChewieController(
-        //allowedScreenSleep: false,
-        //allowFullScreen: true,
-        deviceOrientationsAfterFullScreen: [
-          DeviceOrientation.landscapeRight,
-          DeviceOrientation.landscapeLeft,
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ],
-        videoPlayerController: _controller,
-        //aspectRatio: _aspectRatio,
-        autoPlay: true,
-        looping: true,
-        showControls: false,
-      );
-      _chewieController.addListener(() {
-        if (_chewieController.isFullScreen) {
-          SystemChrome.setPreferredOrientations([
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ]);
-        } else {
-          SystemChrome.setPreferredOrientations([
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ]);
-        }
-      });
-/*      _initializeVideoPlayerFuture = _controller.initialize();
+      _controller = VideoPlayerController.asset("assets/video/onecanal_5sec.mp4")
+        ..initialize().then((value) => {setState(() {})});
       _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }*/
+      _controller.setVolume(0.0);
+      _controller.play();
     } else if (myString == "onecresent") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/onecresent_5sec.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
+      _controller = VideoPlayerController.asset("assets/video/onecresent_5sec.mp4")
+        ..initialize().then((value) => {setState(() {})});
       _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
+      _controller.setVolume(0.0);
+      _controller.play();
     } else if (myString == "searenity") {
       imageVideo = "video";
-      _controller = VideoPlayerController.asset("assets/video/serenity.mp4");
-      _initializeVideoPlayerFuture = _controller.initialize();
+      _controller = VideoPlayerController.asset("assets/video/serenity.mp4")
+        ..initialize().then((value) => {setState(() {})});
       _controller.setLooping(true);
-      _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        looping: true,
-        allowFullScreen: true,
-        //zoomAndPan: true,
-        aspectRatio: _aspectRatio,
-        showControls: false,
-      );
-      _chewieController.enterFullScreen();
-
-      if (_controller.value.isPlaying) {
-        _controller.pause();
-      } else {
-        _controller.play();
-      }
+      _controller.setVolume(0.0);
+      _controller.play();
     }
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _chewieController.dispose();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
     super.dispose();
   }
 
@@ -279,30 +165,21 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
   }
 
   _getVideoBackground() {
-    return FutureBuilder(
-      future: _initializeVideoPlayerFuture,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return AspectRatio(
-            aspectRatio: 9/16,
-            child: VideoPlayer(_controller),
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      },
-    );/*SafeArea(
-    child: Container(
-    width: double.infinity,
-    height: double.infinity,
+    return  Stack(
+    children: <Widget>[
+    SizedBox.expand(
+    child: FittedBox(
+    fit: BoxFit.cover,
+    child: SizedBox(
+    width: _controller.value.size?.width ?? 0,
+    height: _controller.value.size?.height ?? 0,
     child: VideoPlayer(_controller),
-    *//* child: Chewie(
-            controller: _chewieController,
-          ),*//*
     ),
-    );*/
+    ),
+    ),
+    //FURTHER IMPLEMENTATION
+    ],
+    );
   }
 
   _getImageBackground() {
@@ -480,16 +357,20 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                   children: <Widget>[
                     Text(
                       projectType[index],
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
+                        style: TextStyle(
+                          color: ColorConstants.kLiteBlack,
+                          fontFamily: 'Montserrat',// Text color
+                          fontSize: 16, // Font size
+                          fontWeight: FontWeight.w500, // Font weight
+                        ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -558,15 +439,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -617,15 +502,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -681,15 +570,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -736,15 +629,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -792,15 +689,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -847,15 +748,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -902,15 +807,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],
@@ -955,15 +864,19 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                     Text(
                       projectType[index],
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
+                        color: ColorConstants.kLiteBlack,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.w500, // Font weight
                       ),
                     ),
                     Text(
                       'VIEW',
                       style: TextStyle(
-                        fontSize: 16,
                         color: ColorConstants.kPrimaryColor,
+                        fontFamily: 'Montserrat',// Text color
+                        fontSize: 16, // Font size
+                        fontWeight: FontWeight.bold, // Font weight
                       ),
                     ),
                   ],

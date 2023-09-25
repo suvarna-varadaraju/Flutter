@@ -46,7 +46,6 @@ class _VideoPlayerScreenState extends State<Home> {
           //FURTHER IMPLEMENTATION
         ],
       ),
-
     );
   }
 }
