@@ -393,7 +393,7 @@ class _VideoPlayerScreenState extends State<ProjectBrochures> {
                 } else if (projectType[index] == '4 Bedroom sky villa') {
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context) => PDFViwer(
-                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHAf")));
+                          pdfUrl: 'https://drive.google.com/uc?export=view&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHA',projectType: myString,downloadUrl:"https://drive.google.com/uc?export=download&id=1Sp6cySRYxLb6-pzeA7sFNTR_9B91peHA")));
                 } else if (projectType[index] == '5 Bedroom sky villa') {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
